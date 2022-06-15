@@ -1,0 +1,70 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Core
+@using Commerce.Core.Domain.Templates
+
+@{
+    //int storeId = ViewBag.StoreId;
+    //var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    //var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(storeId);
+
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+@model IList<CategoryModel>
+
+    <div class="eltdf-row-grid-section-wrapper ">
+        <div class="eltdf-row-grid-section">
+            <div class="vc_row wpb_row vc_row-fluid vc_custom_1527604419529 vc_column-gap-35">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-3 vc_col-md-6 vc_col-xs-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                    <div class="eltdf-eh-item    "
+                                         data-item-class="eltdf-eh-custom-5027"
+                                         data-1367-1600="0 0 0 0" data-1025-1366="0 0 0 0"
+                                         data-769-1024="0 0 0 0" data-681-768="0px 10% 0 10%"
+                                         data-680="30px 10% 0 10%">
+                                        <div class="eltdf-eh-item-inner">
+                                            <div class="eltdf-eh-item-content eltdf-eh-custom-5027"
+                                                 style="padding: 0 6% 0 6%">
+                                                <div class="eltdf-image-with-text-holder  eltdf-default   ">
+                                                    <div class="eltdf-iwt-image">
+                                                        <img width="88" height="100"
+                                                             src="@Model[i].PictureModel.ImageUrl"
+                                                             class="attachment-full size-full"
+                                                             alt="" />
+                                                    </div>
+                                                    <div class="eltdf-iwt-text-holder">
+                                                        <h4 class="eltdf-iwt-title">
+                                                            @Model[i].PictureModel.Title
+                                                        </h4>
+                                                        <p class="eltdf-iwt-text"
+                                                           style="color: #515151">
+                                                            @Model[i].Description
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="vc_empty_space" style="height: 32px">
+                                    <span class="vc_empty_space_inner"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    if (i == 3)
+                    {
+                        break;
+                    }
+                }
+
+
+            </div>
+        </div>
+    </div>

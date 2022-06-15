@@ -1,0 +1,39 @@
+﻿@using Commerce.UI.Models.Common
+
+@model HeaderLinksModel
+
+    <div class="eltdf-top-bar">
+        <div class="eltdf-grid">
+            <div class="eltdf-vertical-align-containers">
+                <div class="eltdf-position-left">
+                    <!--social media button-->
+                    @Html.Action("SocialButtons", "Widget", new { id = Model.StoreId })
+                    <!--end social media button-->
+                </div>
+                <div class="eltdf-position-right">
+
+                    <div class="eltdf-position-right-inner">
+                        <a class="eltdf-icon-widget-holder eltdf-icon-has-hover" data-hover-color="#b6dd54"
+                           href="tel:@Model.Phone" target="_self" style="margin: 0 25px 0 0">
+                            <span class="eltdf-icon-element ion-ios-telephone-outline"
+                                  style="color: #9edd00;font-size: 24px"></span>
+                            <span class="eltdf-icon-text "
+                                  style="font-size: 12px;color: #9edd00">@Model.Phone</span>
+                            </a>
+                            @{
+                                var maph = "https://goo.gl/maps/apWZeasgPBPVPA34A";
+                            }
+                            <a class="eltdf-icon-widget-holder eltdf-icon-has-hover" data-hover-color="#b6dd54"
+                               href="@maph"
+                               target="_blank">
+                                <span class="eltdf-icon-element ion-ios-home-outline"
+                                      style="color: #9edd00;font-size: 24px"></span>
+                                <span class="eltdf-icon-text " style="font-size: 12px;color: #9edd00">
+                                    @Model.CompanyAddress
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

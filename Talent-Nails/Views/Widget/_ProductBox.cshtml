@@ -1,0 +1,102 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Core.Domain.Orders
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain.Catalog
+@model ProductOverviewModel
+
+@{ 
+    var shoppingCartTypeId = (int)ShoppingCartType.ShoppingCart;
+    var quantity = 1;
+    var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    var catalogSettings = settingService.LoadSetting<CatalogSettings>(Model.Store.Id);
+}
+
+<div class="product-item" data-productid="">
+    <div class="picture">
+        <a href="@Url.Action("productdetails", "product", new {productId = Model.Id, s= Model.Store.Id })" title="@Model.DefaultPictureModel.Title">
+            <img alt="@Model.DefaultPictureModel.AlternateText" src="@Model.DefaultPictureModel.ImageUrl" title="@Model.DefaultPictureModel.Title" />
+        </a>
+    </div>
+    <div class="details">
+        <h2 class="product-title">
+            <a href="@Url.Action("productdetails", "product", new {productId = Model.Id })">@Model.Name</a>
+        </h2>
+        @if (catalogSettings.ShowSkuOnCatalogPages && !string.IsNullOrEmpty(Model.Sku))
+        {
+            <div class="sku">
+                @Model.Sku
+            </div>
+        }
+        @if (Model.ReviewOverviewModel.AllowCustomerReviews)
+        {
+            var ratingPercent = 0;
+            if (Model.ReviewOverviewModel.TotalReviews != 0)
+            {
+                ratingPercent = ((Model.ReviewOverviewModel.RatingSum * 100) / Model.ReviewOverviewModel.TotalReviews) / 5;
+            }
+            <div class="product-rating-box" title="">
+                <div class="rating">
+                    <div style="width: @(ratingPercent)%">
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="description">
+            @Html.Raw(Model.ShortDescription)
+        </div>
+        <div class="add-info">
+           
+            <div class="prices">
+                @if (!string.IsNullOrEmpty(Model.ProductPrice.OldPrice))
+                {
+                    <span class="price old-price">@Model.ProductPrice.OldPrice</span>
+                }
+                <span class="price actual-price">@Model.Price @*@Model.ProductPrice.Price*@</span>
+                @if (Model.ProductPrice.DisplayTaxShippingInfo)
+                {
+                    //var inclTax = workContext.TaxDisplayType == TaxDisplayType.IncludingTax;
+                    //tax info is already included in the price (incl/excl tax). that's why we display only shipping info here
+                    //of course, you can modify appropriate locales to include VAT info there
+                    <span class="tax-shipping-info">
+                        @*@T(inclTax ? "Products.Price.TaxShipping.InclTax" : "Products.Price.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))*@
+                    </span>
+                }
+                @if (!string.IsNullOrEmpty(Model.ProductPrice.BasePricePAngV))
+                {
+                    <div class="base-price-pangv">
+                        @Model.ProductPrice.BasePricePAngV
+                    </div>
+                }
+            </div>
+           
+            <div class="buttons">
+               
+                @if (!Model.ProductPrice.DisableBuyButton)
+                {
+                    var addToCartText = "Thêm vào giỏ";
+                    /* T("ShoppingCart.AddToCart").Text;*/
+                    //if (Model.ProductPrice.IsRental)
+                    //{
+                    //    addToCartText = T("ShoppingCart.Rent").Text;
+                    //}
+                    //if (Model.ProductPrice.AvailableForPreOrder)
+                    //{
+                    //    addToCartText = T("ShoppingCart.PreOrder").Text;
+                    //}
+                    <input type="button" value="@(addToCartText)" class="button-2 product-box-add-to-cart-button" 
+                           data-id="@Model.Id" data-store="@Model.Store.Id"
+                           onclick="AjaxCart.addCart($(this)); return false;" />
+                }
+                @if (!Model.ProductPrice.DisableAddToCompareListButton)
+                {
+                    <input type="button" value="" title="" class="button-2 add-to-compare-list-button" />
+                }
+                @if (!Model.ProductPrice.DisableWishlistButton)
+                {
+                    <input type="button" value="" title="" class="button-2 add-to-wishlist-button" />
+                }
+            </div>
+           
+        </div>
+    </div>
+</div>

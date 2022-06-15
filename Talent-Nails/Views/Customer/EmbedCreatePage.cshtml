@@ -1,0 +1,391 @@
+﻿@using Commerce.UI.Areas.Admin.Models.Stores
+@using Commerce.UI.Models.Themes
+@model StoreAdminModel
+
+@{
+    ViewBag.Title = "CreatePage";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List web teplate</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Eflyer</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/home/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/Content/home/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="~/Content/home/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+
+
+
+    <link href="~/Themes/HomePage/Content/css/HomeTest.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/HomeMango.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/Cachebackup.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/theme.css" rel="stylesheet" />
+    <style>
+        .rvc-hidden {
+            display: none;
+        }
+
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        .uneditable-input:focus {
+            border-color: rgba(126, 239, 104, 0.8);
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+            color: #666;
+            border: 1px solid #ccc;
+        }
+        .f-13{
+            font-size:13px;
+        }
+        .form-control small {
+            color: red;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            visibility: hidden;
+        }
+
+        .form-control.error small {
+            visibility: visible;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="row d-flex justify-content-center" style="padding-top:20px; margin-bottom:20px;">
+        <div class="col-lg-12">
+            <div class="card" id="card-result" style="border:0; display:none">
+                <div class="card-body text-center p-5 ">
+                    <h1 class="font-weight-bold" style="color:#33DFF8">Thank you!</h1>
+                    <p class="store-name font-weight-bold h4" style="color:#000;"></p>
+                    <p class="text-result" style="font-size: 16px; padding-bottom: 30px; color: #000;"></p>
+                    <div class="col-md-8 mx-auto">
+                        <img class="img-result" src="" style="width:100%;" />
+                        <div style="width:100%">
+                            <span class="text-left float-left font-weight-bold template-name-result">Mango</span>
+                            <span class="text-right float-right last-update-result">Last update: </span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="card" id="box-card-form">
+                @*<div class="card-header" style="text-align: center;background: none;border: none;">
+                    <h3 class="card-title">Resgister new store</h3>
+
+                </div>*@
+                <input type="hidden" id="starttheme" value="@Model.ThemeId"/>
+                <div class="row card-body">
+                    <div class="general-label col-6 box-theme">
+                        @if (Model.ThemesViewModel.Image != null)
+                        {
+                            <img id="img-theme" src="@Model.ThemesViewModel.Image" style="width:100%;" />
+                        }
+                        else
+                        {
+                            <span>Please Choose Themes</span>
+                        }
+                    </div>
+                    <div class="general-label col-6">
+                        @using (Ajax.BeginForm("EmbedCreatePage", "Customer", new AjaxOptions
+                        {
+                            InsertionMode = InsertionMode.Replace,
+                            HttpMethod = "POST",
+                            LoadingElementId = "imgloader",
+                            OnSuccess = "OnSuccess",
+                            OnFailure = "OnFailure",
+                            OnBegin = "OnBegin"
+                        }, new { @class = "form-horizontal auth-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="row">
+                                <h3 class="card-title" style="text-transform:uppercase;">Register new store</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col">Information store</div>
+                                <div class="col">Information contact</div>
+                            </div>
+                            <div class="row" style="margin-bottom:1em;">
+                                <div class="col">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control f-13", placeholder = "Store Name" })
+                                    @Html.ValidationMessageFor(x=>x.Name, "", new {@class="text-danger" })
+                                </div>
+                                <div class="col">
+                                    @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control f-13", placeholder = "Contact Name" })
+                                </div>
+                            </div>
+                            <div class="row " style="margin-bottom:1em;">
+                                <div class="col">
+                                    @Html.DropDownListFor(x => x.ThemeId, Model.Themes, new { @class = "form-control f-13" })
+                                </div>
+                                <div class="col">
+                                    @Html.TextBoxFor(x=>x.ContactEmail, new { @class="form-control f-13", placeholder="Email Contact"})
+                                </div>
+                            </div>
+                            <div class="row " style="margin-bottom:1em;">
+                                <div class="col">
+                                    @Html.TextBoxFor(x=>x.Url, new { @class="form-control f-13", placeholder="Domain name" })
+                                    
+                                </div>
+                                <div class="col">
+                                    @Html.TextBoxFor(x => x.CompanyPhoneNumber, new { @class = "form-control f-13", placeholder = "Phone" })
+                                </div>
+                            </div>
+                            <div class="row " style="margin-bottom:1em;">
+                                <div class="col">
+                                    <div style="margin-bottom: 1em">
+                                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control f-13", placeholder = "Email" })
+                                    </div>
+                                    
+                                </div>
+                                <div class="col">
+                                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control f-13", placeholder = "Note" })
+                                    
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block waves-effect waves-light" id="btn-back" type="button" style="background:#fff; color:#00bed6; border: 1px solid #00bed6;">Back</button>
+                                </div>
+                                <div class="col">
+                                    <button class="btn btn-primary btn-block waves-effect waves-light" id="btn-register" type="submit" style="background:#00bed6; color:#fff;border: #00bed6;">Create page <i class="fa fa-spinner fa-spin spinerloading" style="display:none"></i></button>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    
+                    @*<div class="general-label col-6">
+            @using (Ajax.BeginForm("EmbedCreatePage", "Customer", new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                HttpMethod = "POST",
+                LoadingElementId = "imgloader",
+                OnSuccess = "OnSuccess",
+                OnFailure = "OnFailure",
+                OnBegin = "OnBegin"
+            }, new { @class = "form-horizontal auth-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group mb-2">
+                    <label for="conf_password">Theme name</label>
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.ThemeId, Model.Themes, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Store name</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Email POS</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @required = "", @type = "email" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Email Contact</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.ContactEmail, new { @class = "form-control", @required = "", @type = "email" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Contact name</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control", @required = "" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Phone number</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.CompanyPhoneNumber, new { @class = "form-control", @required = "" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Domain name</label>
+                    <div class="input-group">
+                        @Html.TextBoxFor(x => x.Url, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="username">Message</label>
+                    <div class="input-group">
+                        @Html.TextAreaFor(x => x.Message, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group mb-0 row">
+                    <div class="col-12">
+                        <button class="btn btn-primary btn-block waves-effect waves-light" id="btn-register" type="submit" style="background:#000;">Create page <i class="fa fa-spinner fa-spin spinerloading" style="display:none"></i></button>
+                    </div>
+                </div>
+            }
+
+        </div>*@
+
+                </div><!--end card-body-->
+
+            </div><!--end card-->
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/src/themes/themes-lib.js"></script>
+    <script src="~/Scripts/src/themes/theme.js"></script>
+    <script>
+        $('#MangoIntegrate').click(function () {
+            if ($('#MangoIntegrate').is(':checked')) {
+                $('.box-rvc').removeClass('rvc-hidden');
+                $(this).val('true');
+            } else {
+                $('.box-rvc').addClass('rvc-hidden');
+                $(this).val('false');
+            }
+        })
+        $('#btn-back').click(function () {
+            window.location.href = '/theme/EmbedViewDetails/' + $('#starttheme').val();
+        })
+        $('#ThemeId').change(function () {
+            var value = $(this).val();
+            //alert(value);
+            if (value != '0') {
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: '/Customer/ChangeTheme',
+                    dataType: 'json',
+
+                    data: { id: value },
+                    success: (response) => {
+                        var img = $('#img-theme');
+                        if (img.length > 0) {
+                            $('#img-theme').attr('src', response.extended_data.Url)
+                        }
+                        else {
+                            $('.box-theme').html('<img id="img-theme" src=' + response.extended_data.Url + ' style="width:100%;" />')
+                        }
+                    }
+                });
+            }
+            else {
+                $('.box-theme').html(' <span>Please Choose Themes</span>');
+            }
+
+        })
+        function OnSuccess(data) {
+            if (data.error_code == 1) {
+                alert(data.error_message);
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            $('.store-name').text(data.extended_data.storeName);
+            $('.text-result').text(data.error_message);
+            $('.img-result').attr('src', data.extended_data.urlTheme);
+            $('.template-name-result').text(data.extended_data.themeName);
+            $('.last-update-result').text('Last update: '  + data.extended_data.lastUpdate);
+
+            $('#box-card-form').hide();
+            $('#card-result').show();
+        }
+        function OnFailure(data) {
+
+            alert(data.error_message);
+            $('#btn-register').prop('readonly', false);
+            $('.spinerloading').hide();
+        }
+
+        function OnBegin() {
+
+            $('#btn-register').attr('readonly', true);
+            $('.spinerloading').show();
+            if ($('#ContactName').val().length == 0) {
+                alert('Please input contact name');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+
+            if ($('#ThemeId').val() == 0) {
+                alert('Please chooose template');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            if ($('#ContactEmail').val().length = 0) {
+                alert('Please input email');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            if ($('#Email').val().length = 0) {
+                alert('Please input email');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            if ($('#Url').val().length == 0) {
+                alert('Please input domain name');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            if ($('#CompanyPhoneNumber').val().length == 0) {
+                alert('Please input contact phone');
+                $('#btn-register').attr('readonly', false);
+                $('.spinerloading').hide();
+                return false;
+            }
+            return true;
+        }
+
+
+    </script>
+    
+</body>
+</html>

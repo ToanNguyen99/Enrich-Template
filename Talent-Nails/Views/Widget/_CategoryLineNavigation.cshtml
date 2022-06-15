@@ -1,0 +1,41 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Core.Domain.Templates
+@model CategoryNavigationModel.CategoryLineModel
+@{
+    var active = Model.Category.Id == Model.CurrentCategoryId;  //|| Model.Category.SubCategories.Count(BreadCrumbContainsCurrentCategoryId) > 0;
+    var last = Model.Category.Id == Model.CurrentCategoryId;
+    var liClass = active ? "active" : "inactive";
+    if (last)
+    {
+        liClass += " last";
+    }
+}
+<li class="@liClass">
+    <a href="">
+        @Model.Category.Name
+        @if (Model.Category.NumberOfProducts.HasValue)
+        {
+            <span>@Model.Category.NumberOfProducts.Value</span>
+        }
+    </a>
+    @{
+        if (Model.Category.Id == Model.CurrentCategoryId)
+        {
+            if (Model.Category.SubCategories.Count > 0)
+            {
+                <ul class="sublist">
+                    @foreach (var subCategory in Model.Category.SubCategories)
+                    {
+                        var categoryLineModel = new CategoryNavigationModel.CategoryLineModel
+                        {
+                            CurrentCategoryId = Model.CurrentCategoryId,
+                            Category = subCategory
+                        };
+                        @Html.Partial("_CategoryLine.Navigation", categoryLineModel)
+                    }
+                </ul>
+            }
+        }
+    }
+</li>
+

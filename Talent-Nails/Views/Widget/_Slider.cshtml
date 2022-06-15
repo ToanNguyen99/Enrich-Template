@@ -1,0 +1,127 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Services.Configuration;
+@using Commerce.Core.Domain;
+@using Commerce.UI.Models.Cms
+@using Commerce.Core
+
+
+@model List<SliderModel>
+@{
+
+    string currentController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+
+}
+    <div class="vc_row wpb_row vc_row-fluid">
+        <div class="wpb_column vc_column_container vc_col-sm-12">
+            <div class="vc_column-inner">
+                <div class="wpb_wrapper">
+                    <!-- START shophomeslider2 REVOLUTION SLIDER 6.1.8 -->
+                    <p class="rs-p-wp-fix"></p>
+                    <rs-module-wrap id="rev_slider_14_1_wrapper" data-source="gallery"
+                                    style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+                        <rs-module id="rev_slider_14_1" style="display:none;"
+                                   data-version="6.1.8">
+                            <rs-slides>
+                                <rs-slide data-key="rs-25" data-title="Slide"
+                                          data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+                                    <img src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/slide-5.jpg"
+                                         title="slide 5" width="1822" height="722"
+                                         class="rev-slidebg" data-no-retina>
+
+                                    <rs-layer id="slider-14-slide-25-layer-4"
+                                              data-type="image" data-rsp_ch="on"
+                                              data-xy="xo:6px,6px,13px,13px;yo:451px;"
+                                              data-text="l:22;a:inherit;"
+                                              data-dim="w:['387px','387px','387px','387px'];h:['301px','301px','301px','301px'];"
+                                              data-frame_0="tp:600;"
+                                              data-frame_1="tp:600;e:Power2.easeOut;st:800;sp:2000;sR:800;"
+                                              data-frame_999="o:0;tp:600;st:w;sR:200;"
+                                              style="z-index:6;">
+                                        <img src="~/Themes/Mango-KVDEN/wp-content/uploads/revslider/shop-home-rev-2-img-21.png"
+                                             width="387" height="301" data-no-retina>
+                                    </rs-layer>
+
+                                    <rs-layer id="slider-14-slide-25-layer-5"
+                                              data-type="text" data-color="#9edd00"
+                                              data-rsp_ch="on"
+                                              data-xy="xo:277px,164px,71px,23px;yo:311px,261px,261px,154px;"
+                                              data-text="s:72,72,62,47;l:22;a:inherit;"
+                                              data-frame_0="x:50px;tp:600;"
+                                              data-frame_1="tp:600;e:Power2.easeOut;st:200;sp:2000;sR:200;"
+                                              data-frame_999="o:0;tp:600;st:w;sR:800;"
+                                              style="z-index:7;font-family:Gentium Book Basic;">
+                                        LOVE YOUR NAILS
+                                    </rs-layer>
+
+                                    <rs-layer id="slider-14-slide-25-layer-7"
+                                              data-type="text" data-rsp_ch="on"
+                                              data-xy="xo:385px,261px,155px,89px;yo:360px,313px,304px,186px;"
+                                              data-text="w:normal;s:27,29,24,18;l:34;fw:300;a:inherit;"
+                                              data-dim="w:602px,602px,602px,399px;h:200px;"
+                                              data-frame_0="x:50px;tp:600;"
+                                              data-frame_1="tp:600;e:Power2.easeOut;st:200;sp:2000;sR:200;"
+                                              data-frame_999="o:0;tp:600;st:w;sR:800;"
+                                              style="z-index:8;font-family:Montserrat;">
+                                        Shine
+                                        from Hand to Toes
+                                    </rs-layer>
+
+                                </rs-slide>
+                            </rs-slides>
+                            <rs-progress class="rs-bottom"
+                                         style="visibility: hidden !important;"></rs-progress>
+                        </rs-module>
+                        <script type="text/javascript">
+                            setREVStartSize({
+                                c: 'rev_slider_14_1',
+                                rl: [1240, 1024, 778, 480],
+                                el: [750, 722, 600, 300],
+                                gw: [1920, 1441, 1025, 600],
+                                gh: [750, 722, 600, 300],
+                                type: 'hero',
+                                justify: '',
+                                layout: 'fullwidth',
+                                mh: "0"
+                            });
+                            var revapi14, tpj;
+                            jQuery(function () {
+                                tpj = jQuery;
+                                if (tpj("#rev_slider_14_1").revolution == undefined) {
+                                    revslider_showDoubleJqueryError("#rev_slider_14_1");
+                                } else {
+                                    revapi14 = tpj("#rev_slider_14_1").show().revolution({
+                                        sliderType: "hero",
+                                       
+                                        jsFileLocation: "@linkbase/Themes/Mango-KVDEN/wp-content/plugins/revslider/public/assets/js/",
+                                        duration: 3000,
+                                        visibilityLevels: "1240,1024,778,480",
+                                        gridwidth: "1920,1441,1025,600",
+                                        gridheight: "750,722,600,300",
+                                        editorheight: "750,722,600,300",
+                                        responsiveLevels: "1240,1024,778,480",
+                                        disableProgressBar: "on",
+                                        navigation: {
+                                            onHoverStop: false
+                                        },
+                                        viewPort: {
+                                            enable: true,
+                                            visible_area: "20%"
+                                        },
+                                        fallbacks: {
+                                            allowHTML5AutoPlayOnAndroid: true
+                                        },
+                                    });
+                                }
+
+                            });
+                        </script>
+                    </rs-module-wrap>
+                    <!-- END REVOLUTION SLIDER -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+

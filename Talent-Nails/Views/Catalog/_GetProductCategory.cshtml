@@ -1,0 +1,23 @@
+﻿@using Commerce.UI.Models.Catalog
+@model CategoryModel
+
+<div class="jumbotron jumbotron-fluid" style="background:#fff;">
+    <div class="container">
+        <h1 class="display-4">@Model.Name</h1>
+        @if(!string.IsNullOrEmpty(Model.Description))
+        {
+            @Html.Raw(Model.Description)
+        }
+        
+    <ul class="list-group">
+        @foreach (var item in Model.Products)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                @item.Name
+                <span class="badge badge-pill">@string.Format("{0:C}", item.Price)</span>
+            </li>
+        }
+        
+    </ul>
+    </div>
+</div>

@@ -1,0 +1,489 @@
+﻿@using Commerce.UI.Models.Topics
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Web.Framework.Themes
+@using Commerce.Core.Domain.Templates
+
+
+@{
+    int storeId = ViewBag.StoreId;
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+@model TopicModel
+
+@switch (Model.SystemName)
+{
+    case TopicName.ShortAboutUs:
+        <div class="eltdf-row-grid-section-wrapper ">
+            <div class="eltdf-row-grid-section">
+                <div class="vc_row wpb_row vc_row-fluid vc_custom_1527594589607">
+                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-12 vc_col-xs-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 eltdf-one-column-alignment-right">
+                                    <div class="eltdf-eh-item    "
+                                         data-item-class="eltdf-eh-custom-8014"
+                                         data-1367-1600="15.5% 12% 15.5% 14%"
+                                         data-1025-1366="15.5% 12% 15.5% 14%"
+                                         data-769-1024="12% 0% 0% 0%"
+                                         data-681-768="5% 0% 0% 0%" data-680="28% 0 0 0">
+                                        <div class="eltdf-eh-item-inner">
+                                            <div class="eltdf-eh-item-content eltdf-eh-custom-8014"
+                                                 style="padding: 13% 20% 13% 6%">
+                                                <div class="eltdf-image-gallery  eltdf-ig-slider-type eltdf-three-columns eltdf-no-space   eltdf-image-behavior-custom-link eltdf-bullets-right eltdf-has-border">
+                                                    <div class="eltdf-ig-slider eltdf-owl-slider"
+                                                         data-number-of-items="1"
+                                                         data-enable-loop="yes"
+                                                         data-enable-autoplay="yes"
+                                                         data-slider-speed="5000"
+                                                         data-slider-speed-animation="600"
+                                                         data-slider-padding="no"
+                                                         data-enable-navigation="no"
+                                                         data-enable-pagination="yes">
+                                                        <div class="eltdf-ig-image">
+                                                            <a itemprop="url"
+                                                               class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                               href="#" target="_self"
+                                                               title="Manicure in Kentucky 1">
+                                                                <img width="470"
+                                                                     height="471"
+                                                                     src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-1.jpg"
+                                                                     class="attachment-full size-full"
+                                                                     alt=""
+                                                                     srcset="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-1.jpg 470w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-1-300x300.jpg 300w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-1-150x150.jpg 150w"
+                                                                     sizes="(max-width: 470px) 100vw, 470px" />
+                                                            </a>
+                                                        </div>
+                                                        <div class="eltdf-ig-image">
+                                                            <a itemprop="url"
+                                                               class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                               href="" target="_self"
+                                                               title="Manicure in Kentucky 2">
+                                                                <img width="470"
+                                                                     height="471"
+                                                                     src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-2.jpg"
+                                                                     class="attachment-full size-full"
+                                                                     alt=""
+                                                                     srcset="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-2.jpg 470w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-2-300x300.jpg 300w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/Manicure-in-Kentucky-2-150x150.jpg 150w"
+                                                                     sizes="(max-width: 470px) 100vw, 470px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-12 vc_col-xs-12">
+                        <div class="vc_column-inner vc_custom_1527602752613">
+                            <div class="wpb_wrapper">
+                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                    <div class="eltdf-eh-item    "
+                                         data-item-class="eltdf-eh-custom-1357"
+                                         data-1367-1600="29% 6% 0 3.5%"
+                                         data-1025-1366="29% 6% 0 3.5%"
+                                         data-769-1024="6% 30% 0 22px"
+                                         data-681-768="6% 17% 0 18px"
+                                         data-680="15% 0% 0 19px">
+                                        <div class="eltdf-eh-item-inner">
+                                            <div class="eltdf-eh-item-content eltdf-eh-custom-1357"
+                                                 style="padding: 31% 30% 0 0">
+                                                <div class="eltdf-section-title-holder  eltdf-st-standard eltdf-st-title-left  eltdf-animated-tagline">
+                                                    <div class="eltdf-st-inner">
+                                                        <span class="eltdf-st-tagline"
+                                                              style="color: #515151">
+                                                            @Model.Store.Name
+                                                            @*Talent Nails*@
+                                                        </span>
+                                                        <h2 class="eltdf-st-title"
+                                                            style="color: #9edd00">
+                                                            @Html.Raw(Model.Title)
+                                                        </h2>
+                                                        @Html.Raw(Model.Body)
+                                                        @*<p class="eltdf-st-text"
+                                                               style="color: #515151;font-size: 17px;font-weight: 300">
+                                                                Talent Nails is an upscale
+                                                                nail spa. When you enter Queen
+                                                                Nail Spa, you’ll feel like you
+                                                                have just left Paducah, and
+                                                                walked into Hollywood. Owned and
+                                                                operated by nail technicians
+                                                                with years of experience,
+                                                                provided most up to date and
+                                                                high standard services, and
+                                                                always maintain the best level
+                                                                of cleanness.
+                                                            </p>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="eltdf-elements-holder  eltdf-two-columns  eltdf-responsive-mode-768 eltdf-one-column-alignment-left">
+                                    <div class="eltdf-eh-item    "
+                                         data-item-class="eltdf-eh-custom-8279"
+                                         data-1367-1600="6% 0 0 4%"
+                                         data-1025-1366="6% 0 0 4%"
+                                         data-769-1024="4% 0 41px 3%"
+                                         data-681-768="4% 0 41px 3%"
+                                         data-680="8% 0 21% 20px">
+                                        <div class="eltdf-eh-item-inner">
+                                            <div class="eltdf-eh-item-content eltdf-eh-custom-8279"
+                                                 style="padding: 4% 0 0 0">
+                                                <a itemprop="url" href="@Url.RouteUrl("Topic", new {id= Model.Store.Id, seName= "AboutUs" })"
+                                                   target="_self"
+                                                   style="color: #7eb000;font-size: 11px;font-weight: 400"
+                                                   class="eltdf-btn eltdf-btn-medium eltdf-btn-discontinuous eltdf-btn-">
+                                                    <span class="eltdf-btn-text">
+                                                        read more
+                                                    </span>
+                                                    <span class="eltdf-disc-btn eltdf-disc-btn-top-left"></span>
+                                                    <span class="eltdf-disc-btn eltdf-disc-btn-top-right"></span>
+                                                    <span class="eltdf-disc-btn eltdf-disc-btn-right"></span>
+                                                    <span class="eltdf-disc-btn eltdf-disc-btn-bottom-right"></span>
+                                                    <span class="eltdf-disc-btn eltdf-disc-btn-bottom-left"></span>
+                                                    <span class="eltdf-disc-btn eltdf-blob-btn-left"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    case "EnjoytheDifference":
+        <div class="eltdf-row-grid-section-wrapper "
+             style="background-color:rgba(182,221,84,0.13)">
+            <div class="eltdf-row-grid-section">
+                <div class="vc_row wpb_row vc_row-fluid vc_custom_1609545202641">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                    <div class="eltdf-eh-item    "
+                                         data-item-class="eltdf-eh-custom-5482"
+                                         data-1367-1600="0 23% 0 23%"
+                                         data-1025-1366="0 23% 0 23%"
+                                         data-769-1024="0 15% 0 15%" data-681-768="0 6% 0 6%"
+                                         data-680="0 1% 0 1%">
+                                        <div class="eltdf-eh-item-inner">
+                                            <div class="eltdf-eh-item-content eltdf-eh-custom-5482"
+                                                 style="padding: 0 29% 0 29%">
+                                                <div class="eltdf-section-title-holder  eltdf-st-standard eltdf-st-title-left  "
+                                                     style="text-align: center">
+                                                    <div class="eltdf-st-inner">
+                                                        <h2 class="eltdf-st-title"
+                                                            style="color: #9edd00">
+                                                            Enjoy the
+                                                            Difference
+                                                        </h2>
+                                                        <p class="eltdf-st-text"
+                                                           style="color: #515151;font-size: 17px;font-weight: 300">
+                                                            Extravagant, Friendly Nail
+                                                            Service at an Affordable Price
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    case "PeopleSay":
+        <div class="eltdf-row-grid-section-wrapper ">
+            <div class="eltdf-row-grid-section">
+                <div class="vc_row wpb_row vc_row-fluid vc_custom_1613660917025">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="eltdf-testimonials-holder clearfix eltdf-testimonials-standard ">
+                                    <div class="eltdf-testimonials eltdf-owl-slider"
+                                         data-number-of-items="1" data-enable-loop="no"
+                                         data-enable-autoplay="no" data-slider-speed="5000"
+                                         data-slider-speed-animation="600"
+                                         data-enable-navigation="no"
+                                         data-enable-pagination="yes">
+                                        <div class="eltdf-testimonial-content"
+                                             id="eltdf-testimonials-132">
+                                            <div class="eltdf-testimonial-image">
+                                                <img width="96" height="96"
+                                                     src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-1.png"
+                                                     class="attachment-96x96 size-96x96 wp-post-image"
+                                                     alt="f" />
+                                            </div>
+                                            <div class="eltdf-testimonial-text-holder">
+                                                <p class="eltdf-testimonial-text">
+                                                    Had a
+                                                    wonderful experience! I was here
+                                                    visiting family and decided to have have
+                                                    both a full set done and a pedicure.
+                                                    Customer service and nail services were
+                                                    outstanding.
+                                                </p>
+                                                <span class="eltdf-testimonial-author">
+                                                    <span class="eltdf-testimonials-author-name">
+                                                        Patricia
+                                                        Thralls
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="eltdf-testimonial-content"
+                                             id="eltdf-testimonials-125">
+                                            <div class="eltdf-testimonial-image">
+                                                <img width="96" height="96"
+                                                     src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-2.png"
+                                                     class="attachment-96x96 size-96x96 wp-post-image"
+                                                     alt="d" />
+                                            </div>
+                                            <div class="eltdf-testimonial-text-holder">
+                                                <p class="eltdf-testimonial-text">
+                                                    Beautiful
+                                                    salon! The staff was so welcoming and
+                                                    answered all my questions. Definitely my
+                                                    new nail place.
+                                                </p>
+                                                <span class="eltdf-testimonial-author">
+                                                    <span class="eltdf-testimonials-author-name">
+                                                        Alicia
+                                                        Katz
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="eltdf-testimonial-content"
+                                             id="eltdf-testimonials-122">
+                                            <div class="eltdf-testimonial-image">
+                                                <img width="96" height="96"
+                                                     src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-3.png"
+                                                     class="attachment-96x96 size-96x96 wp-post-image"
+                                                     alt="d" />
+                                            </div>
+                                            <div class="eltdf-testimonial-text-holder">
+                                                <p class="eltdf-testimonial-text">
+                                                    Called for
+                                                    a same day appointment, very clean and
+                                                    professional. Had a gel manicure and a
+                                                    pedicure, looks great!
+                                                </p>
+                                                <span class="eltdf-testimonial-author">
+                                                    <span class="eltdf-testimonials-author-name">
+                                                        Molly
+                                                        Johnson
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    case TopicName.WhyChooseUs:
+        <div class="vc_row wpb_row vc_row-fluid vc_custom_1609766649990">
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner">
+                    <div class="wpb_wrapper">
+                        <div class="eltdf-row-grid-section-wrapper ">
+                            <div class="eltdf-row-grid-section">
+                                <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-7 vc_col-md-12 vc_col-xs-12">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                    <div class="eltdf-eh-item    "
+                                                         data-item-class="eltdf-eh-custom-4273"
+                                                         data-769-1024="141px 0 0 0"
+                                                         data-681-768="141px 0 0 0"
+                                                         data-680="137px 0 0 0">
+                                                        <div class="eltdf-eh-item-inner">
+                                                            <div class="eltdf-eh-item-content eltdf-eh-custom-4273"
+                                                                 style="padding: 207px 0 0 0">
+                                                                <div class="eltdf-single-image-holder   eltdf-image-behavior-custom-link eltdf-has-border eltdf-has-animation">
+                                                                    <div class="eltdf-si-inner">
+                                                                        <a itemprop="url"
+                                                                           href="#"
+                                                                           target="_self">
+                                                                            <img width="800"
+                                                                                 height="594"
+                                                                                 src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/pedicure-in-Kentucky.jpg"
+                                                                                 class="attachment-full size-full"
+                                                                                 alt=""
+                                                                                 srcset="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/pedicure-in-Kentucky.jpg 800w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/pedicure-in-Kentucky-300x223.jpg 300w, ~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/pedicure-in-Kentucky-768x570.jpg 768w"
+                                                                                 sizes="(max-width: 800px) 100vw, 800px" />
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-5 vc_col-md-12 vc_col-xs-12">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                    <div class="eltdf-eh-item    "
+                                                         data-item-class="eltdf-eh-custom-2109"
+                                                         data-1367-1600="66.6% 0% 0 5.3%"
+                                                         data-1025-1366="66.6% 0% 0 5.3%"
+                                                         data-769-1024="9.6% 14% 0 0.3%"
+                                                         data-681-768="9.6% 14% 0 .3%"
+                                                         data-680="12.6% 0% 0 0.3%">
+                                                        <div class="eltdf-eh-item-inner">
+                                                            <div class="eltdf-eh-item-content eltdf-eh-custom-2109"
+                                                                 style="padding: 63.6% 0% 0 5.3%">
+                                                                <div class="eltdf-section-title-holder  eltdf-st-standard eltdf-st-title-left  eltdf-animated-tagline">
+                                                                    <div class="eltdf-st-inner">
+                                                                        <span class="eltdf-st-tagline"
+                                                                              style="color: #515151">
+                                                                            We
+                                                                            Care About
+                                                                        </span>
+                                                                        <h2 class="eltdf-st-title"
+                                                                            style="color: #9edd00">
+                                                                            Your Pedicure
+                                                                            Safety
+                                                                        </h2>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="wpb_text_column wpb_content_element ">
+                                                                    <div class="wpb_wrapper">
+                                                                        <ul>
+                                                                            <li style="color: #515151;">
+                                                                                Newest Pedi
+                                                                                Chair
+                                                                                Technology
+                                                                            </li>
+                                                                            <li style="color: #515151;">
+                                                                                Contamination
+                                                                                Worry-Free
+                                                                                with 100%
+                                                                                Disposable
+                                                                                Jet-Liner
+                                                                            </li>
+                                                                            <li>
+                                                                                <strong>
+                                                                                    <span class="eltdf-highlight"
+                                                                                          style="color: #ffffff;background-color: #9edd00">
+                                                                                        You
+                                                                                        will
+                                                                                        no
+                                                                                        longer
+                                                                                        have
+                                                                                        to
+                                                                                        share
+                                                                                        your
+                                                                                        pedicure
+                                                                                        basin
+                                                                                    </span>
+                                                                                </strong>
+                                                                            </li>
+                                                                        </ul>
+                                                                        @*<div class="elfsight-widget-countdown-timer elfsight-widget"
+                                                                             data-elfsight-countdown-timer-options="%7B%22type%22%3A%22remaining%22%2C%22startTime%22%3A1621359125519%2C%22endTime%22%3A1621791125524%2C%22setTimeZone%22%3Afalse%2C%22timeZone%22%3A%22Etc%5C%2FGMT%2B0%22%2C%22startNumber%22%3A1%2C%22endNumber%22%3A100%2C%22numberFrequency%22%3A%22auto%22%2C%22numberFrequencyValue%22%3A10%2C%22timeValue%22%3A24%2C%22timeUnit%22%3A%22hours%22%2C%22remainingRestartEnabled%22%3Atrue%2C%22remainingRestartValue%22%3A1%2C%22remainingRestartUnit%22%3A%22days%22%2C%22position%22%3A%22top-bar-static%22%2C%22messageBeforeTimer%22%3A%22%3Cdiv%20style%3D%5C%22text-align%3A%20center%3B%5C%22%3EWe%27re%20sorry%2C%20We%20don%27t%20accept%20appointments%20on%20weekends.%3C%5C%2Fdiv%3E%22%2C%22elements%22%3A%5B%5D%2C%22daysLabel%22%3A%22Days%22%2C%22hoursLabel%22%3A%22Hours%22%2C%22minutesLabel%22%3A%22Minutes%22%2C%22secondsLabel%22%3A%22Seconds%22%2C%22timerStopAction%22%3A%22hide%22%2C%22timerStopMessage%22%3A%22The%20countdown%20is%20finished%22%2C%22timerStopCountersVisible%22%3Atrue%2C%22timerStopButtonVisible%22%3Atrue%2C%22timerStopButtonLink%22%3A%22%22%2C%22timerStopButtonText%22%3A%22%22%2C%22timerStopRedirect%22%3A%22%22%2C%22align%22%3A%22center%22%2C%22buttonVisible%22%3Afalse%2C%22buttonLink%22%3A%22https%3A%5C%2F%5C%2Felfsight.com%22%2C%22buttonText%22%3A%22Shop%20now%22%2C%22buttonLinkTargetBlank%22%3Atrue%2C%22areaClickable%22%3Atrue%2C%22style%22%3A%22separated-blocks%22%2C%22theme%22%3A%22default%22%2C%22timerColor%22%3A%22rgb%2863%2C%2063%2C%2063%29%22%2C%22labelsColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22messageColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22buttonColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22backgroundColor%22%3A%22rgb%2839%2C%2039%2C%2039%29%22%2C%22messageFontSize%22%3A20%2C%22timerSize%22%3A32%2C%22buttonSize%22%3A16%2C%22animation%22%3A%22none%22%2C%22widgetId%22%3A%222%22%7D"
+                                                                             data-elfsight-countdown-timer-version="1.4.0"
+                                                                             data-elfsight-widget-id="elfsight-countdown-timer-2">
+                                                                        </div>*@
+                                                                    </div>
+                                                                </div>
+                                                                <div class="vc_empty_space"
+                                                                     style="height: 50px">
+                                                                    <span class="vc_empty_space_inner"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+    case TopicName.OpenHours:
+        <p style="color: #9edd00;">
+            <strong>MON &#8211;FRI:</strong>
+            <a style="color: white;">9:30 AM &#8211;7:00 PM</a>
+        </p>
+        <p>
+            <a></a>
+        </p>
+        <p style="color: #9edd00;">
+            <strong>SAT: </strong>
+            <a style="color: white;">9:00 AM &#8211;7:00 PM
+        </p>
+        <p>
+            <a>  </a>
+        </p>
+        <p style="color: #9edd00;">
+            <strong>SUN: </strong>
+            <a style="color: white;">11:00 AM &#8211;5:00 PM</a>
+        </p>
+        <p>
+            <a> </a>
+        </p>
+        break;
+    case "HoursOfOperation":
+        <p>
+            <strong>
+                Hours Of
+                Operation:
+            </strong>
+        </p>
+
+
+        <ul>
+            <li style="color: #515151;">
+                Mon
+                &#8211;Fri: 9:30 am
+                &#8211;7:00 pm
+            </li>
+            <li style="color: #515151;">
+                Sat:
+                9:30 am &#8211;6:30 pm
+            </li>
+            <li style="color: #515151;">
+                Sun:
+                11:00 am &#8211;5:00 pm
+            </li>
+        </ul>
+        break;
+    case "PopupContent":
+    <div id="text-11" class="widget eltdf-sidearea widget_text">
+        <div class="textwidget">
+            <h3 style="font-size: 50px;">@Model.Title</h3>
+        </div>
+    </div>
+    @Html.Raw(Model.Body)
+   
+        break;
+    default:
+        break;
+}

@@ -1,0 +1,16 @@
+﻿@using Commerce.UI.Models.Catalog
+@model ProductDetailsModel
+@if (!string.IsNullOrWhiteSpace(Model.StockAvailability) || Model.DisplayBackInStockSubscription)
+{
+    <div class="availability">
+        @if (!string.IsNullOrWhiteSpace(Model.StockAvailability))
+        {
+            <div class="stock">
+                <span class="label">Availability:</span>
+                <span class="value" id="stock-availability-value-@Model.Id">@Model.StockAvailability</span>
+            </div>
+        }
+        @*@Html.Partial("_BackInStockSubscription", Model)*@
+        
+    </div>
+}

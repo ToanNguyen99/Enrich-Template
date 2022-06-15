@@ -1,0 +1,47 @@
+﻿@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+@model StoreInformationSettings
+
+@{
+    string hrefeGift = Model.MangoLink + "AreaGiftCard/home/eGiftCate?key=" + Model.MangoCardPortalLink;
+    string hrefAppointment = Model.MangoLink + "BookOnline?parameters=" + Model.MangoBookingOnlineLink;
+}
+
+    <div class="floating-menu float-menu-1">
+        <ul class="fm-bar">
+            <li class="fm-item-1-0">
+                <a role="button" id="BookAppointment">
+                    <div class="fm-icon">
+                        <img src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/02/book-9.png">
+                    </div>
+                    <div class="fm-label"></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery('#BookAppointment').click(function (e) {
+            Swal.fire({
+                //title: '<strong>HTML <u>example</u></strong>',
+                //icon: 'info',
+                html: '<iframe id="frameapt" src="@hrefAppointment" style="width:100%; height:100vh;; margin:0; padding:0;"></iframe>',
+
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false
+            })
+        })
+        jQuery('.egiftframe').click(function (e) {
+            Swal.fire({
+
+                html: '<iframe id="frameapt" src="@hrefeGift" style="width:100%; height:100vh; margin:0; padding:0;"></iframe>',
+                width: '90%',
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false
+            })
+        })
+    })
+</script>

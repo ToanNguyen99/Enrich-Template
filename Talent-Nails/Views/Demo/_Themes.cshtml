@@ -1,0 +1,36 @@
+﻿@model List<Commerce.Web.Models.Themes.ThemesViewModel>
+
+@{
+    if (Model.Count > 0)
+    {
+        foreach (var theme in Model)
+        {
+            <div class="slider" data-id="@theme.Id">
+                <div class="slider-inner"></div>
+                <img loading="lazy"
+                     src="@theme.Image"
+                     width="270" height="180" alt="@theme.Name" />
+                <div class="slider-content">
+                    @*<a href="#" class="slider-title">@theme.Name</a>*@
+                    <a href="#" class="slider-tag">
+                        @theme.Description
+                    </a>
+                    <a class="into-demo" href="/Themes/@(theme.SystemName)/index.html">Demo</a>
+                </div>
+                <div class="slider-footer">
+                    <div class="slider-flex">
+                        <div>@theme.Name</div>
+                        <a class="btn-sl-theme" data-id="@theme.Id">Select</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    }
+}
+
+@*Url.Action("createpage", "customer", new { Area = "" })*@
+
+
+
+

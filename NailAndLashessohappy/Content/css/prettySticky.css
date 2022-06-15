@@ -1,0 +1,22 @@
+.top-nav nav 
+{
+	position:fixed;
+	background:none;
+	z-index:10000;
+	width:100%;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	padding: .5em 0;
+}
+
+.top-nav nav.navScroll 
+{
+	background:rgba(0,0,0,0.7);
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+	color: #ff5722;
+	background-color: #rgba(25,25,26,0.85);
+    box-shadow: 0px 2px 5px #2b2b2b;
+}

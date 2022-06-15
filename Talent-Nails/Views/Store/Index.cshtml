@@ -1,0 +1,191 @@
+﻿@using Commerce.UI.Models.Stores
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Web.Framework.Themes
+@using Commerce.Core.Domain.Templates
+@using Commerce.Core 
+@{
+
+    //var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    //var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(Model.Store.Id);
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+@model StoreModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = Constant.DefaultTheme +  $"{Model.DefaultStoreTheme}/Views/Shared/_ColumnsOne.cshtml";
+}
+
+    <div class="eltdf-content">
+        <div class="eltdf-content-inner">
+            <div class="eltdf-full-width">
+                <div class="eltdf-full-width-inner">
+                    <div class="eltdf-grid-row">
+                        <div class="eltdf-page-content-holder eltdf-grid-col-12">
+                            <!--slider-->
+                            @Html.Action("Slider", "Widget", new { id = Model.Store.Id })
+                            <!--end slider-->
+                            <!--welcome-->
+                            @Html.Action("TopicBlock", "Widget", new { id = Model.Store.Id, systemName = TopicName.ShortAboutUs })
+                            <!--end welcome-->
+                            <!--service-->
+                            <div class="partialContents" data-url="@Url.Action("HomepageCategories", "Widget", new { id = Model.Store.Id })"></div>
+                            @*@Html.Action("HomepageCategories", "Widget", new { id = Model.Store.Id })*@
+                            <!--end service-->
+                            <!--Enjoy the Difference-->
+                            @*@Html.Action("TopicBlock", "Widget", new { id = Model.Store.Id, systemName = "EnjoytheDifference" })*@
+                            <div class="eltdf-row-grid-section-wrapper " style="background-color:rgba(182,221,84,0.13)">
+                                <div class="eltdf-row-grid-section">
+                                    <div class="vc_row wpb_row vc_row-fluid vc_custom_1609545202641">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="vc_column-inner">
+                                                <div class="wpb_wrapper">
+                                                    <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                        <div class="eltdf-eh-item    " data-item-class="eltdf-eh-custom-5482" data-1367-1600="0 23% 0 23%" data-1025-1366="0 23% 0 23%" data-769-1024="0 15% 0 15%" data-681-768="0 6% 0 6%" data-680="0 1% 0 1%">
+                                                            <div class="eltdf-eh-item-inner">
+                                                                <div class="eltdf-eh-item-content eltdf-eh-custom-5482" style="padding: 0 29% 0 29%">
+                                                                    <div class="eltdf-section-title-holder  eltdf-st-standard eltdf-st-title-left  " style="text-align: center">
+                                                                        <div class="eltdf-st-inner">
+                                                                            <h2 class="eltdf-st-title" style="color: #9edd00">Enjoy the Difference </h2>
+                                                                            <p class="eltdf-st-text" style="color: #515151;font-size: 17px;font-weight: 300">
+                                                                                Extravagant, Friendly Nail Service at an Affordable Price
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end Enjoy the Difference-->
+                            <!--image difference-->
+                            @Html.Action("HomepageGallery", "Widget", new { id = Model.Store.Id })
+                            <!--end image difference-->
+                            <!--people say-->
+
+                            <div class="eltdf-row-grid-section-wrapper ">
+                                <div class="eltdf-row-grid-section">
+                                    <div class="vc_row wpb_row vc_row-fluid vc_custom_1613660917025">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                                            <div class="vc_column-inner">
+                                                <div class="wpb_wrapper">
+                                                    <div class="eltdf-testimonials-holder clearfix eltdf-testimonials-standard ">
+                                                        <div class="eltdf-testimonials eltdf-owl-slider"
+                                                             data-number-of-items="1" data-enable-loop="no"
+                                                             data-enable-autoplay="no" data-slider-speed="5000"
+                                                             data-slider-speed-animation="600"
+                                                             data-enable-navigation="no"
+                                                             data-enable-pagination="yes">
+                                                            <div class="eltdf-testimonial-content"
+                                                                 id="eltdf-testimonials-132">
+                                                                <div class="eltdf-testimonial-image">
+                                                                    <img width="96" height="96"
+                                                                         src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-1.png"
+                                                                         class="attachment-96x96 size-96x96 wp-post-image"
+                                                                         alt="f" />
+                                                                </div>
+                                                                <div class="eltdf-testimonial-text-holder">
+                                                                    <p class="eltdf-testimonial-text">
+                                                                        Had a
+                                                                        wonderful experience! I was here
+                                                                        visiting family and decided to have have
+                                                                        both a full set done and a pedicure.
+                                                                        Customer service and nail services were
+                                                                        outstanding.
+                                                                    </p>
+                                                                    <span class="eltdf-testimonial-author">
+                                                                        <span class="eltdf-testimonials-author-name">
+                                                                            Patricia
+                                                                            Thralls
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eltdf-testimonial-content"
+                                                                 id="eltdf-testimonials-125">
+                                                                <div class="eltdf-testimonial-image">
+                                                                    <img width="96" height="96"
+                                                                         src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-2.png"
+                                                                         class="attachment-96x96 size-96x96 wp-post-image"
+                                                                         alt="d" />
+                                                                </div>
+                                                                <div class="eltdf-testimonial-text-holder">
+                                                                    <p class="eltdf-testimonial-text">
+                                                                        Beautiful
+                                                                        salon! The staff was so welcoming and
+                                                                        answered all my questions. Definitely my
+                                                                        new nail place.
+                                                                    </p>
+                                                                    <span class="eltdf-testimonial-author">
+                                                                        <span class="eltdf-testimonials-author-name">
+                                                                            Alicia
+                                                                            Katz
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="eltdf-testimonial-content"
+                                                                 id="eltdf-testimonials-122">
+                                                                <div class="eltdf-testimonial-image">
+                                                                    <img width="96" height="96"
+                                                                         src="~/Themes/Mango-KVDEN/wp-content/uploads/2018/05/testimonial-img-3.png"
+                                                                         class="attachment-96x96 size-96x96 wp-post-image"
+                                                                         alt="d" />
+                                                                </div>
+                                                                <div class="eltdf-testimonial-text-holder">
+                                                                    <p class="eltdf-testimonial-text">
+                                                                        Called for
+                                                                        a same day appointment, very clean and
+                                                                        professional. Had a gel manicure and a
+                                                                        pedicure, looks great!
+                                                                    </p>
+                                                                    <span class="eltdf-testimonial-author">
+                                                                        <span class="eltdf-testimonials-author-name">
+                                                                            Molly
+                                                                            Johnson
+                                                                        </span>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end people say-->
+                            <!--extension topic WhyChooseUse-->
+                            @Html.Action("TopicBlock", "Widget", new { id = Model.Store.Id, systemName = TopicName.WhyChooseUs })
+                            <!--end extension-->
+                            @*<div class="vc_row wpb_row vc_row-fluid">
+            <div class="wpb_column vc_column_container vc_col-sm-12">
+                <div class="vc_column-inner">
+                    <div class="wpb_wrapper">
+                        <div class="elfsight-widget-popup elfsight-widget"
+                             data-elfsight-popup-options="%7B%22blocks%22%3A%5B%7B%22id%22%3A%220495cc72-d6c7-42e5-8d5f-b54ca3fd8f83%22%2C%22type%22%3A%22iframe%22%2C%22titleText%22%3A%22Sample%20Title%22%2C%22titleColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22titleFontSize%22%3A24%2C%22titleFontWeight%22%3A400%2C%22textText%22%3A%22%22%2C%22textColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22textFontSize%22%3A17%2C%22bannerFile%22%3Anull%2C%22bannerPosition%22%3A%22right%22%2C%22imageFile%22%3Anull%2C%22imageScale%22%3A100%2C%22videoUrl%22%3A%22%22%2C%22videoAutoplay%22%3Atrue%2C%22couponCode%22%3A%22COUPON%20CODE%22%2C%22couponClickToCopyText%22%3A%22CLICK%20TO%20COPY%22%2C%22couponCopiedText%22%3A%22COPIED%21%22%2C%22couponColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22couponFontSize%22%3A16%2C%22buttonAction%22%3A%22redirect%22%2C%22buttonUrl%22%3A%22%22%2C%22buttonOpenLinkInNewTab%22%3Atrue%2C%22buttonText%22%3A%22Button%20Text%22%2C%22buttonStyle%22%3A%22filled%22%2C%22buttonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22buttonFontSize%22%3A16%2C%22linkAction%22%3A%22redirect%22%2C%22linkUrl%22%3A%22%22%2C%22linkText%22%3A%22Sample%20Text%22%2C%22linkColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22linkFontSize%22%3A17%2C%22separatorColor%22%3A%22rgba%2817%2C%2017%2C%2017%2C%20.2%29%22%2C%22separatorMargin%22%3A0%2C%22spacingSize%22%3A16%2C%22iframeUrl%22%3A%22https%3A%5C%2F%5C%2Fmanage2.mangoforsalon.com%5C%2F%5C%2F%5C%2FBookOnline%3Fparameters%3DqspEHAdbJpKoZ5RYbB7jQWDS70HQDM9cfRgpk5jWWwA%253d%22%2C%22iframeWidth%22%3A%22400%22%2C%22iframeHeight%22%3A900%2C%22htmlCode%22%3A%22%22%2C%22formFields%22%3A%5B%7B%22id%22%3A%22e80f1644-bd32-4789-94f5-4e4063caae5c%22%2C%22type%22%3A%22email%22%2C%22label%22%3A%22Email%22%7D%5D%2C%22formButtonText%22%3A%22Submit%22%2C%22undefined%22%3Anull%2C%22iframeAllowAutoplay%22%3Atrue%2C%22iframeAllowCamera%22%3Afalse%2C%22iframeAllowMicrophone%22%3Afalse%2C%22formSubmitAction%22%3A%22closePopup%22%2C%22formSubmitActionRedirectUrl%22%3A%22%22%2C%22formStyle%22%3A%22filled%22%2C%22formFontSize%22%3A16%2C%22formButtonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22formInputColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22label%22%3A%22iFrame%22%7D%5D%2C%22layout%22%3A%22modal%22%2C%22width%22%3A400%2C%22popupBlocksAlignment%22%3A%22center%22%2C%22popupShape%22%3A%22rectangle%22%2C%22popupBackgroundColor%22%3A%22rgb%2848%2C%2048%2C%2048%29%22%2C%22popupBackgroundImage%22%3Anull%2C%22popupBackgroundImageOverlayColor%22%3A%22%22%2C%22overlayVisible%22%3Atrue%2C%22overlayClose%22%3Atrue%2C%22overlayBackgroundColor%22%3A%22rgba%2857%2C%2057%2C%2057%2C%200.7%29%22%2C%22overlayBackgroundImage%22%3Anull%2C%22overlayBackgroundImageOverlayColor%22%3Anull%2C%22closeButtonVisible%22%3Atrue%2C%22closeButtonColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22triggerPageLoadEnabled%22%3Afalse%2C%22triggerTimeOnPageEnabled%22%3Afalse%2C%22triggerTimeOnPageDuration%22%3A30%2C%22triggerScrollEnabled%22%3Afalse%2C%22triggerScrollPosition%22%3A50%2C%22triggerScrollToElementEnabled%22%3Afalse%2C%22triggerScrollToElementId%22%3Anull%2C%22triggerClickEnabled%22%3Atrue%2C%22triggerClickElementId%22%3A%22BookAppointment%22%2C%22triggerExitIntentEnabled%22%3Afalse%2C%22displayFrequency%22%3A%22everytime%22%2C%22displayPages%22%3A%22allPages%22%2C%22displayExcludedPages%22%3A%5B%5D%2C%22displaySpecificPages%22%3A%5B%5D%2C%22displayDevices%22%3A%5B%22tablet%22%2C%22mobile%22%2C%22desktop%22%5D%2C%22widgetId%22%3A%221%22%7D"
+                             data-elfsight-popup-version="1.1.0"
+                             data-elfsight-widget-id="elfsight-popup-1"></div>
+                        <div class="elfsight-widget-popup elfsight-widget"
+                             data-elfsight-popup-options="%7B%22blocks%22%3A%5B%7B%22id%22%3A%220495cc72-d6c7-42e5-8d5f-b54ca3fd8f83%22%2C%22type%22%3A%22iframe%22%2C%22titleText%22%3A%22Sample%20Title%22%2C%22titleColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22titleFontSize%22%3A24%2C%22titleFontWeight%22%3A400%2C%22textText%22%3A%22%22%2C%22textColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22textFontSize%22%3A17%2C%22bannerFile%22%3Anull%2C%22bannerPosition%22%3A%22right%22%2C%22imageFile%22%3Anull%2C%22imageScale%22%3A100%2C%22videoUrl%22%3A%22%22%2C%22videoAutoplay%22%3Atrue%2C%22couponCode%22%3A%22COUPON%20CODE%22%2C%22couponClickToCopyText%22%3A%22CLICK%20TO%20COPY%22%2C%22couponCopiedText%22%3A%22COPIED%21%22%2C%22couponColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22couponFontSize%22%3A16%2C%22buttonAction%22%3A%22redirect%22%2C%22buttonUrl%22%3A%22%22%2C%22buttonOpenLinkInNewTab%22%3Atrue%2C%22buttonText%22%3A%22Button%20Text%22%2C%22buttonStyle%22%3A%22filled%22%2C%22buttonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22buttonFontSize%22%3A16%2C%22linkAction%22%3A%22redirect%22%2C%22linkUrl%22%3A%22%22%2C%22linkText%22%3A%22Sample%20Text%22%2C%22linkColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22linkFontSize%22%3A17%2C%22separatorColor%22%3A%22rgba%2817%2C%2017%2C%2017%2C%20.2%29%22%2C%22separatorMargin%22%3A0%2C%22spacingSize%22%3A16%2C%22iframeUrl%22%3A%22https%3A%5C%2F%5C%2Fmanage2.mangoforsalon.com%5C%2FAreaGiftCard%5C%2Fhome%5C%2FeGiftCate%3Fkey%3DpgZK7uyaUX6tEAXjfBbdoQ%3D%3D%22%2C%22iframeWidth%22%3A%22100%25%22%2C%22htmlCode%22%3A%22%22%2C%22formFields%22%3A%5B%7B%22id%22%3A%22e80f1644-bd32-4789-94f5-4e4063caae5c%22%2C%22type%22%3A%22email%22%2C%22label%22%3A%22Email%22%7D%5D%2C%22formButtonText%22%3A%22Submit%22%2C%22undefined%22%3Anull%2C%22iframeAllowAutoplay%22%3Afalse%2C%22iframeAllowCamera%22%3Afalse%2C%22iframeAllowMicrophone%22%3Afalse%2C%22formSubmitAction%22%3A%22closePopup%22%2C%22formSubmitActionRedirectUrl%22%3A%22%22%2C%22formStyle%22%3A%22filled%22%2C%22formFontSize%22%3A16%2C%22formButtonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22formInputColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22label%22%3A%22iFrame%22%2C%22iframeHeight%22%3A700%7D%5D%2C%22layout%22%3A%22modal%22%2C%22width%22%3A900%2C%22popupBlocksAlignment%22%3A%22center%22%2C%22popupShape%22%3A%22rectangle%22%2C%22popupBackgroundColor%22%3A%22rgb%2848%2C%2048%2C%2048%29%22%2C%22popupBackgroundImage%22%3Anull%2C%22popupBackgroundImageOverlayColor%22%3A%22%22%2C%22overlayVisible%22%3Atrue%2C%22overlayClose%22%3Atrue%2C%22overlayBackgroundColor%22%3A%22rgba%2857%2C%2057%2C%2057%2C%200.7%29%22%2C%22overlayBackgroundImage%22%3Anull%2C%22overlayBackgroundImageOverlayColor%22%3A%22%22%2C%22closeButtonVisible%22%3Atrue%2C%22closeButtonColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22triggerPageLoadEnabled%22%3Afalse%2C%22triggerTimeOnPageEnabled%22%3Afalse%2C%22triggerTimeOnPageDuration%22%3A30%2C%22triggerScrollEnabled%22%3Afalse%2C%22triggerScrollPosition%22%3A50%2C%22triggerScrollToElementEnabled%22%3Afalse%2C%22triggerScrollToElementId%22%3Anull%2C%22triggerClickEnabled%22%3Atrue%2C%22triggerClickElementId%22%3A%22Egift%22%2C%22triggerExitIntentEnabled%22%3Afalse%2C%22displayFrequency%22%3A%22everytime%22%2C%22displayPages%22%3A%22allPages%22%2C%22displayExcludedPages%22%3A%5B%5D%2C%22displaySpecificPages%22%3A%5B%5D%2C%22displayDevices%22%3A%5B%22desktop%22%2C%22tablet%22%2C%22mobile%22%5D%2C%22widgetId%22%3A%222%22%7D"
+                             data-elfsight-popup-version="1.1.0"
+                             data-elfsight-widget-id="elfsight-popup-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- close div.content_inner -->
+    </div>

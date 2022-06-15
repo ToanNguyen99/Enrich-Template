@@ -1,0 +1,380 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+
+@model TopMenuModel
+
+@{
+    int storeId = ViewBag.StoreId;
+    var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(storeId);
+    string hrefeGift = storeInformationSettings.MangoLink + "AreaGiftCard/home/eGiftCate?key=" + storeInformationSettings.MangoCardPortalLink;
+    string hrefAppointment = storeInformationSettings.MangoLink + "BookOnline?parameters=" + storeInformationSettings.MangoBookingOnlineLink;
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+
+
+<header class="eltdf-page-header">
+    <div class="eltdf-menu-area eltdf-menu-left">
+        <div class="eltdf-grid">
+            <div class="eltdf-vertical-align-containers">
+                <div class="eltdf-position-left">
+
+                    <div class="eltdf-position-left-inner">
+                        <!--logo-->
+                        @Html.Action("Logo", "Widget", new { id = Model.Store.Id })
+
+                        <!--end logo-->
+                        <nav class="eltdf-main-menu eltdf-drop-down eltdf-default-nav">
+                            <ul id="menu-menu" class="clearfix">
+                                @if (Model.DisplayHomepageMenuItem)
+                                {
+                                    <li id="nav-menu-item-5798"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-24 current_page_item eltdf-active-item narrow">
+                                        <a href="@Url.Action("index", "store")" class=" current ">
+                                            <span class="item_outer">
+                                                <span class="item_text">Home</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (Model.DisplayAboutusMenuItem)
+                                {
+                                    <li id="nav-menu-item-5795"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                        <a href="@Url.RouteUrl("Topic", new { seName = "AboutUs"})" class="">
+                                            <span class="item_outer">
+                                                <span class="item_text">About Us</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (Model.DisplayCategoryMenuItem)
+                                {
+                                    <li id="nav-menu-item-5791"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                        <a href="@Url.Action("list","catalog")" class="">
+                                            <span class="item_outer">
+                                                <span class="item_text">Menu</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (Model.DisplayGalleryMenuItem)
+                                {
+                                    <li id="nav-menu-item-5792"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                        <a href="@Url.Action("Gallery","Media")" class="">
+                                            <span class="item_outer">
+                                                <span class="item_text">Gallery</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (Model.DisplayPromotionsMenuItem)
+                                {
+                                    <li id="nav-menu-item-5790"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                        <a href="@Url.RouteUrl("Topic", new {  seName = "Promotion"})" class="">
+                                            <span class="item_outer">
+                                                <span class="item_text">Promotion</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+                                @if (Model.DisplayContactUsMenuItem)
+                                {
+                                    <li id="nav-menu-item-5796"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                        <a href="@Url.Action("ContactUs","Common")" class="">
+                                            <span class="item_outer">
+                                                <span class="item_text">Contact Us</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="eltdf-position-right">
+
+                    <div class="eltdf-position-right-inner">
+                        <a class="eltdf-side-menu-button-opener eltdf-icon-has-hover eltdf-side-menu-button-opener-svg-path"
+                           href="javascript:void(0)" style="color: #a7dd23;">
+                            <span class="eltdf-side-menu-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     width="16.813px" height="16.063px" viewBox="0 0 16.813 16.063"
+                                     enable-background="new 0 0 16.813 16.063" xml:space="preserve">
+                                <g>
+                                <g>
+                                <path fill="transparent" stroke-width=".7"
+                                      d="M3.324,6.275c-1.646,0-2.984-1.338-2.984-2.983s1.339-2.984,2.984-2.984s2.984,1.339,2.984,2.984 S4.97,6.275,3.324,6.275z M3.324,0.706c-1.426,0-2.586,1.16-2.586,2.586s1.16,2.586,2.586,2.586S5.91,4.717,5.91,3.292 S4.75,0.706,3.324,0.706z" />
+
+
+
+
+
+
+
+                                                    </g>
+                                                </g>
+                                <g>
+                                <g>
+                                <path fill="transparent" stroke-width=".7"
+                                      d="M13.461,6.275c-1.646,0-2.983-1.338-2.983-2.983s1.338-2.984,2.983-2.984s2.984,1.339,2.984,2.984 S15.106,6.275,13.461,6.275z M13.461,0.706c-1.426,0-2.586,1.16-2.586,2.586s1.16,2.586,2.586,2.586s2.586-1.16,2.586-2.586 S14.887,0.706,13.461,0.706z" />
+
+
+
+
+
+
+
+
+
+
+
+                                                    </g>
+                                                </g>
+                                <g>
+                                <g>
+                                <path fill="transparent" stroke-width=".7"
+                                      d="M3.324,15.825c-1.646,0-2.984-1.339-2.984-2.984s1.339-2.985,2.984-2.985s2.984,1.34,2.984,2.985 S4.97,15.825,3.324,15.825z M3.324,10.254c-1.426,0-2.586,1.159-2.586,2.586c0,1.426,1.16,2.586,2.586,2.586 s2.586-1.16,2.586-2.586C5.91,11.414,4.75,10.254,3.324,10.254z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    </g>
+                                                </g>
+                                <g>
+                                <g>
+                                <path fill="transparent" stroke-width=".7"
+                                      d="M13.461,15.825c-1.646,0-2.983-1.339-2.983-2.984s1.338-2.985,2.983-2.985s2.984,1.34,2.984,2.985 S15.106,15.825,13.461,15.825z M13.461,10.254c-1.426,0-2.586,1.159-2.586,2.586c0,1.426,1.16,2.586,2.586,2.586 s2.586-1.16,2.586-2.586C16.047,11.414,14.887,10.254,13.461,10.254z" />
+
+
+
+
+
+
+
+
+
+
+
+                                                    </g>
+                                                </g>
+                                            </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="" class="eltdf-search-cover" method="get">
+        <div class="eltdf-container">
+            <div class="eltdf-container-inner clearfix">
+                <div class="eltdf-form-holder-outer">
+                    <div class="eltdf-form-holder">
+                        <div class="eltdf-form-holder-inner">
+                            <input type="text" placeholder="Search" name="s" class="eltdf_search_field"
+                                   autocomplete="off" />
+                            <a class="eltdf-search-close eltdf-search-close-icon-pack" href="#">
+                                <i class="eltdf-icon-ion-icon ion-ios-close-empty "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</header>
+<header class="eltdf-mobile-header">
+    <div class="eltdf-mobile-header-inner">
+        <div class="eltdf-mobile-header-holder">
+            <div class="eltdf-grid">
+                <div class="eltdf-vertical-align-containers">
+                    <div class="eltdf-vertical-align-containers">
+                        <div class="eltdf-position-left">
+                            <div class="eltdf-position-left-inner">
+                                <!--lolo mobile-->
+                                @Html.Action("Logo", "Widget", new { id = Model.Store.Id, showMobile = true })
+                                <!--end logo mobile-->
+                            </div>
+                        </div>
+                        <div class="eltdf-mobile-menu-opener eltdf-mobile-menu-opener-svg-path">
+                            <a href="javascript:void(0)">
+                                <span class="eltdf-mobile-menu-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                         width="16.813px" height="16.063px" viewBox="0 0 16.813 16.063"
+                                         enable-background="new 0 0 16.813 16.063" xml:space="preserve">
+                                    <g>
+                                    <g>
+                                    <path fill="transparent" stroke-width=".7"
+                                          d="M3.324,6.275c-1.646,0-2.984-1.338-2.984-2.983s1.339-2.984,2.984-2.984s2.984,1.339,2.984,2.984 S4.97,6.275,3.324,6.275z M3.324,0.706c-1.426,0-2.586,1.16-2.586,2.586s1.16,2.586,2.586,2.586S5.91,4.717,5.91,3.292 S4.75,0.706,3.324,0.706z" />
+
+
+
+
+
+
+
+
+
+
+
+                                                        </g>
+                                            </g>
+                                    <g>
+                                    <g>
+                                    <path fill="transparent" stroke-width=".7"
+                                          d="M13.461,6.275c-1.646,0-2.983-1.338-2.983-2.983s1.338-2.984,2.983-2.984s2.984,1.339,2.984,2.984 S15.106,6.275,13.461,6.275z M13.461,0.706c-1.426,0-2.586,1.16-2.586,2.586s1.16,2.586,2.586,2.586s2.586-1.16,2.586-2.586 S14.887,0.706,13.461,0.706z" />
+
+
+
+
+
+
+
+                                                        </g>
+                                                    </g>
+                                    <g>
+                                    <g>
+                                    <path fill="transparent" stroke-width=".7"
+                                          d="M3.324,15.825c-1.646,0-2.984-1.339-2.984-2.984s1.339-2.985,2.984-2.985s2.984,1.34,2.984,2.985 S4.97,15.825,3.324,15.825z M3.324,10.254c-1.426,0-2.586,1.159-2.586,2.586c0,1.426,1.16,2.586,2.586,2.586 s2.586-1.16,2.586-2.586C5.91,11.414,4.75,10.254,3.324,10.254z" />
+
+
+
+
+
+
+
+
+
+
+
+                                                        </g>
+                                                    </g>
+                                    <g>
+                                    <g>
+                                    <path fill="#2d2d2d" stroke-width=".7"
+                                          d="M13.461,15.825c-1.646,0-2.983-1.339-2.983-2.984s1.338-2.985,2.983-2.985s2.984,1.34,2.984,2.985 S15.106,15.825,13.461,15.825z M13.461,10.254c-1.426,0-2.586,1.159-2.586,2.586c0,1.426,1.16,2.586,2.586,2.586 s2.586-1.16,2.586-2.586C16.047,11.414,14.887,10.254,13.461,10.254z" />
+
+
+
+
+
+
+
+
+
+
+
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="eltdf-mobile-nav" role="navigation" aria-label="Mobile Menu">
+            <div class="eltdf-grid">
+                <ul id="menu-menu-2" class="">
+                    @if (Model.DisplayHomepageMenuItem)
+                    {
+                        <li id="mobile-menu-item-5798"
+                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-24 current_page_item eltdf-active-item">
+                            <a href="@Url.Action("Index","Store")" class=" current ">
+                                <span>Home</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.DisplayAboutusMenuItem)
+                    {
+                        <li id="mobile-menu-item-5795"
+                            class="menu-item menu-item-type-post_type menu-item-object-page ">
+                            <a href="@Url.RouteUrl("Topic", new {  seName="AboutUs" })" class="">
+                                <span>About Us</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.DisplayCategoryMenuItem)
+                    {
+                        <li id="mobile-menu-item-5791"
+                            class="menu-item menu-item-type-post_type menu-item-object-page ">
+                            <a href="@Url.Action("list","catalog")" class="">
+                                <span>Menu</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.DisplayGalleryMenuItem)
+                    {
+                        <li id="mobile-menu-item-5792"
+                            class="menu-item menu-item-type-post_type menu-item-object-page ">
+                            <a href="@Url.Action("Gallery","Media")" class="">
+                                <span>Gallery</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.DisplayPromotionsMenuItem)
+                    {
+                        <li id="mobile-menu-item-5790"
+                            class="menu-item menu-item-type-post_type menu-item-object-page ">
+                            <a href="@Url.RouteUrl("Topic", new { seName="Promotion" })" class="">
+                                <span>Promotion</span>
+                            </a>
+                        </li>
+                    }
+                    @if (Model.DisplayContactUsMenuItem)
+                    {
+                        <li id="mobile-menu-item-5796"
+                            class="menu-item menu-item-type-post_type menu-item-object-page ">
+                            <a href="@Url.Action("ContactUs","Common")" class="">
+                                <span>Contact Us</span>
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <form action="" class="eltdf-search-cover" method="get">
+        <div class="eltdf-container">
+            <div class="eltdf-container-inner clearfix">
+                <div class="eltdf-form-holder-outer">
+                    <div class="eltdf-form-holder">
+                        <div class="eltdf-form-holder-inner">
+                            <input type="text" placeholder="Search" name="s" class="eltdf_search_field"
+                                   autocomplete="off" />
+                            <a class="eltdf-search-close eltdf-search-close-icon-pack" href="#">
+                                <i class="eltdf-icon-ion-icon ion-ios-close-empty "></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</header>
+

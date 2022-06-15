@@ -1,0 +1,523 @@
+﻿@using Commerce.UI.Models.Media
+@using Commerce.Web.Framework.UI
+@using Commerce.Core.Domain.Templates
+@using Commerce.Core 
+
+@model ListGalleryModel
+
+@{
+    ViewBag.Title = "Gallery";
+    Layout = Constant.DefaultTheme + $"{Model.DefaultStoreTheme}/Views/Shared/_ColumnsOne.cshtml";
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+    <div class="eltdf-content">
+        <div class="eltdf-content-inner">
+            <div class="eltdf-title-holder eltdf-centered-type eltdf-title-va-header-bottom eltdf-preload-background eltdf-has-bg-image eltdf-bg-parallax"
+                 style="        height: 510px;
+        background-color: #efefef;
+        background-image: url(../Themes/Mango-KVDEN/wp-content/uploads/2021/01/slide-18.jpg);"
+                 data-height="510">
+                <div class="eltdf-title-image">
+
+                    <img src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/slide-18.jpg"
+                         alt="Image Alt" />
+                </div>
+                <div class="eltdf-title-wrapper" style="height: 510px">
+                    <div class="eltdf-title-inner">
+                        <div class="eltdf-grid">
+                            <h1 class="eltdf-page-title entry-title" style="color: #ffffff">Gallery</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--masonry-->
+            <section class="masonry">
+                @foreach (var item in Model.GalleryModels)
+                {
+                    foreach (var picture in item.PictureModels)
+                    {
+                        <img src="@picture.FullSizeImageUrl" />
+                    }
+                }
+                @*<img src="https://unsplash.it/700/600?image=634" />
+                <img src="https://unsplash.it/700/300?image=455" />
+                <img src="https://unsplash.it/1500/700?image=629" />
+                <img src="https://unsplash.it/700?image=594" />
+                <img src="https://unsplash.it/700/450?image=417" />
+                <img src="https://unsplash.it/700/400?image=410" />
+                <img src="https://unsplash.it/700/550?image=628" />
+                <img src="https://unsplash.it/700/450?image=421" />
+                <img src="https://unsplash.it/700/567?image=572" />
+                <img src="https://unsplash.it/700/978?image=623" />
+                <img src="https://unsplash.it/700/654?image=621" />
+                <img src="https://unsplash.it/700/500?image=423" />
+                <img src="https://unsplash.it/1000/654?image=930" />
+                <img src="https://unsplash.it/700/950?image=1045" />*@
+            </section>
+            <div class="lightbox">
+                <div class="title"></div>
+                <div class="filter"></div>
+                <div class="arrowr"></div>
+                <div class="arrowl"></div>
+                <div class="close"></div>
+            </div>
+            <!--end masonry-->
+            @*<div class="eltdf-full-width">
+                <div class="eltdf-full-width-inner">
+                    <div class="eltdf-grid-row">
+                        <div class="eltdf-page-content-holder eltdf-grid-col-12">
+                            <div class="eltdf-row-grid-section-wrapper ">
+                                <div class="eltdf-row-grid-section">
+                                    <div class="vc_row wpb_row vc_row-fluid vc_custom_1530623602862">
+                                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-4 vc_col-md-6 vc_col-xs-12">
+                                            <div class="vc_column-inner">
+                                                <div class="wpb_wrapper">
+                                                    <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                        <div class="eltdf-eh-item    "
+                                                             data-item-class="eltdf-eh-custom-2844"
+                                                             data-1367-1600="15.5% 0% 15.5% 0%"
+                                                             data-1025-1366="15.5% 0% 15.5% 0%"
+                                                             data-769-1024="12% 0% 0% 0%"
+                                                             data-681-768="5% 0% 0% 0%" data-680="0 0 10% 0">
+                                                            <div class="eltdf-eh-item-inner">
+                                                                <div class="eltdf-eh-item-content eltdf-eh-custom-2844"
+                                                                     style="padding: 13% 0% 13% 0%">
+                                                                    <div class="eltdf-image-gallery  eltdf-ig-slider-type eltdf-three-columns eltdf-no-space   eltdf-image-behavior-custom-link eltdf-bullets-center eltdf-has-border">
+                                                                        <div class="eltdf-ig-slider eltdf-owl-slider"
+                                                                             data-number-of-items="1"
+                                                                             data-enable-loop="yes"
+                                                                             data-enable-autoplay="yes"
+                                                                             data-slider-speed="5000"
+                                                                             data-slider-speed-animation="600"
+                                                                             data-slider-padding="no"
+                                                                             data-enable-navigation="no"
+                                                                             data-enable-pagination="yes">
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="#" target="_self"
+                                                                                   title="services1">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services1.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services1.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services1-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services3">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services3.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services3.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services3-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services24">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services24.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services24.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services24-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services25">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services25.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services25.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services25-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-4 vc_col-md-6 vc_col-xs-12">
+                                            <div class="vc_column-inner">
+                                                <div class="wpb_wrapper">
+                                                    <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                        <div class="eltdf-eh-item    "
+                                                             data-item-class="eltdf-eh-custom-6431"
+                                                             data-1367-1600="15.5% 0% 15.5% 0%"
+                                                             data-1025-1366="15.5% 0% 15.5% 0%"
+                                                             data-769-1024="12% 0% 0% 0%"
+                                                             data-681-768="5% 0% 0% 0%" data-680="0 0 10% 0">
+                                                            <div class="eltdf-eh-item-inner">
+                                                                <div class="eltdf-eh-item-content eltdf-eh-custom-6431"
+                                                                     style="padding: 13% 0% 13% 0%">
+                                                                    <div class="eltdf-image-gallery  eltdf-ig-slider-type eltdf-three-columns eltdf-no-space   eltdf-image-behavior-custom-link eltdf-bullets-center eltdf-has-border">
+                                                                        <div class="eltdf-ig-slider eltdf-owl-slider"
+                                                                             data-number-of-items="1"
+                                                                             data-enable-loop="yes"
+                                                                             data-enable-autoplay="yes"
+                                                                             data-slider-speed="5000"
+                                                                             data-slider-speed-animation="600"
+                                                                             data-slider-padding="no"
+                                                                             data-enable-navigation="no"
+                                                                             data-enable-pagination="yes">
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="#" target="_self"
+                                                                                   title="services5">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services5.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services5.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services5-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services17">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services17.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services17.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services17-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services16">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services16.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services16.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services16-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services26">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services26.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services26.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services26-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-4 vc_col-md-6 vc_col-xs-12">
+                                            <div class="vc_column-inner">
+                                                <div class="wpb_wrapper">
+                                                    <div class="eltdf-elements-holder   eltdf-one-column  eltdf-responsive-mode-768 ">
+                                                        <div class="eltdf-eh-item    "
+                                                             data-item-class="eltdf-eh-custom-9796"
+                                                             data-1367-1600="15.5% 0% 15.5% 0%"
+                                                             data-1025-1366="15.5% 0% 15.5% 0%"
+                                                             data-769-1024="12% 0% 0% 0%"
+                                                             data-681-768="5% 0% 0% 0%" data-680="0 0 10% 0">
+                                                            <div class="eltdf-eh-item-inner">
+                                                                <div class="eltdf-eh-item-content eltdf-eh-custom-9796"
+                                                                     style="padding: 13% 0% 13% 0%">
+                                                                    <div class="eltdf-image-gallery  eltdf-ig-slider-type eltdf-three-columns eltdf-no-space   eltdf-image-behavior-custom-link eltdf-bullets-center eltdf-has-border">
+                                                                        <div class="eltdf-ig-slider eltdf-owl-slider"
+                                                                             data-number-of-items="1"
+                                                                             data-enable-loop="yes"
+                                                                             data-enable-autoplay="yes"
+                                                                             data-slider-speed="5000"
+                                                                             data-slider-speed-animation="600"
+                                                                             data-slider-padding="no"
+                                                                             data-enable-navigation="no"
+                                                                             data-enable-pagination="yes">
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="#" target="_self"
+                                                                                   title="services8">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services8.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services8.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services8-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services25">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services25.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services25.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services25-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="services22">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/services22.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services22.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services22-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="eltdf-ig-image">
+                                                                                <a itemprop="url"
+                                                                                   class="eltdf-ig-custom-link eltdf-block-drag-link"
+                                                                                   href="" target="_self"
+                                                                                   title="slide 25">
+                                                                                    <img width="600"
+                                                                                         height="461"
+                                                                                         src="https://qnsmallside.com/wp-content/uploads/2021/01/slide-25.jpg"
+                                                                                         class="attachment-full size-full"
+                                                                                         alt=""
+                                                                                         srcset="https://qnsmallside.com/wp-content/uploads/2021/01/slide-25.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/slide-25-300x231.jpg 300w"
+                                                                                         sizes="(max-width: 600px) 100vw, 600px" />
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vc_row wpb_row vc_row-fluid vc_custom_1530623475699">
+                                <div class="wpb_column vc_column_container vc_col-sm-12">
+                                    <div class="vc_column-inner">
+                                        <div class="wpb_wrapper">
+                                            <div class="eltdf-image-gallery eltdf-grid-list eltdf-grid-masonry-list eltdf-disable-bottom-space  eltdf-ig-masonry-type eltdf-six-columns eltdf-normal-space  eltdf-has-custom-layout eltdf-image-behavior-custom-link eltdf-bullets-center ">
+                                                <div class="eltdf-ig-inner eltdf-outer-space eltdf-masonry-list-wrapper">
+                                                    <div class="eltdf-masonry-grid-sizer"></div>
+                                                    <div class="eltdf-masonry-grid-gutter"></div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="#" target="_self" title="services12">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services12.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services12.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services12-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services11">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services11.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services11.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services11-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services10">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services10.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services10.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services10-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services9">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services9.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services9.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services9-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services8">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services8.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services8.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services8-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services7">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services7.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services7.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services7-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services6">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services6.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services6.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services6-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services5">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services5.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services5.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services5-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services4">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services4.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services4.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services4-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services3">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services3.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services3.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services3-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services2">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services2.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services2.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services2-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="eltdf-ig-image eltdf-item-space ">
+                                                        <div class="eltdf-ig-image-inner">
+                                                            <a itemprop="url" class="eltdf-ig-custom-link"
+                                                               href="" target="_self" title="services1">
+                                                                <img width="600" height="461"
+                                                                     src="https://qnsmallside.com/wp-content/uploads/2021/01/services1.jpg"
+                                                                     class="attachment-full size-full" alt=""
+                                                                     srcset="https://qnsmallside.com/wp-content/uploads/2021/01/services1.jpg 600w, https://qnsmallside.com/wp-content/uploads/2021/01/services1-300x231.jpg 300w"
+                                                                     sizes="(max-width: 600px) 100vw, 600px" />
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="elfsight-widget-popup elfsight-widget"
+                                                 data-elfsight-popup-options="%7B%22blocks%22%3A%5B%7B%22id%22%3A%220495cc72-d6c7-42e5-8d5f-b54ca3fd8f83%22%2C%22type%22%3A%22iframe%22%2C%22titleText%22%3A%22Sample%20Title%22%2C%22titleColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22titleFontSize%22%3A24%2C%22titleFontWeight%22%3A400%2C%22textText%22%3A%22%22%2C%22textColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22textFontSize%22%3A17%2C%22bannerFile%22%3Anull%2C%22bannerPosition%22%3A%22right%22%2C%22imageFile%22%3Anull%2C%22imageScale%22%3A100%2C%22videoUrl%22%3A%22%22%2C%22videoAutoplay%22%3Atrue%2C%22couponCode%22%3A%22COUPON%20CODE%22%2C%22couponClickToCopyText%22%3A%22CLICK%20TO%20COPY%22%2C%22couponCopiedText%22%3A%22COPIED%21%22%2C%22couponColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22couponFontSize%22%3A16%2C%22buttonAction%22%3A%22redirect%22%2C%22buttonUrl%22%3A%22%22%2C%22buttonOpenLinkInNewTab%22%3Atrue%2C%22buttonText%22%3A%22Button%20Text%22%2C%22buttonStyle%22%3A%22filled%22%2C%22buttonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22buttonFontSize%22%3A16%2C%22linkAction%22%3A%22redirect%22%2C%22linkUrl%22%3A%22%22%2C%22linkText%22%3A%22Sample%20Text%22%2C%22linkColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22linkFontSize%22%3A17%2C%22separatorColor%22%3A%22rgba%2817%2C%2017%2C%2017%2C%20.2%29%22%2C%22separatorMargin%22%3A0%2C%22spacingSize%22%3A16%2C%22iframeUrl%22%3A%22https%3A%5C%2F%5C%2Fmanage2.mangoforsalon.com%5C%2FAreaGiftCard%5C%2Fhome%5C%2FeGiftCate%3Fkey%3DpgZK7uyaUX6tEAXjfBbdoQ%3D%3D%22%2C%22iframeWidth%22%3A%22100%25%22%2C%22htmlCode%22%3A%22%22%2C%22formFields%22%3A%5B%7B%22id%22%3A%22e80f1644-bd32-4789-94f5-4e4063caae5c%22%2C%22type%22%3A%22email%22%2C%22label%22%3A%22Email%22%7D%5D%2C%22formButtonText%22%3A%22Submit%22%2C%22undefined%22%3Anull%2C%22iframeAllowAutoplay%22%3Afalse%2C%22iframeAllowCamera%22%3Afalse%2C%22iframeAllowMicrophone%22%3Afalse%2C%22formSubmitAction%22%3A%22closePopup%22%2C%22formSubmitActionRedirectUrl%22%3A%22%22%2C%22formStyle%22%3A%22filled%22%2C%22formFontSize%22%3A16%2C%22formButtonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22formInputColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22label%22%3A%22iFrame%22%2C%22iframeHeight%22%3A700%7D%5D%2C%22layout%22%3A%22modal%22%2C%22width%22%3A900%2C%22popupBlocksAlignment%22%3A%22center%22%2C%22popupShape%22%3A%22rectangle%22%2C%22popupBackgroundColor%22%3A%22rgb%2848%2C%2048%2C%2048%29%22%2C%22popupBackgroundImage%22%3Anull%2C%22popupBackgroundImageOverlayColor%22%3A%22%22%2C%22overlayVisible%22%3Atrue%2C%22overlayClose%22%3Atrue%2C%22overlayBackgroundColor%22%3A%22rgba%2857%2C%2057%2C%2057%2C%200.7%29%22%2C%22overlayBackgroundImage%22%3Anull%2C%22overlayBackgroundImageOverlayColor%22%3A%22%22%2C%22closeButtonVisible%22%3Atrue%2C%22closeButtonColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22triggerPageLoadEnabled%22%3Afalse%2C%22triggerTimeOnPageEnabled%22%3Afalse%2C%22triggerTimeOnPageDuration%22%3A30%2C%22triggerScrollEnabled%22%3Afalse%2C%22triggerScrollPosition%22%3A50%2C%22triggerScrollToElementEnabled%22%3Afalse%2C%22triggerScrollToElementId%22%3Anull%2C%22triggerClickEnabled%22%3Atrue%2C%22triggerClickElementId%22%3A%22Egift%22%2C%22triggerExitIntentEnabled%22%3Afalse%2C%22displayFrequency%22%3A%22everytime%22%2C%22displayPages%22%3A%22allPages%22%2C%22displayExcludedPages%22%3A%5B%5D%2C%22displaySpecificPages%22%3A%5B%5D%2C%22displayDevices%22%3A%5B%22desktop%22%2C%22tablet%22%2C%22mobile%22%5D%2C%22widgetId%22%3A%222%22%7D"
+                                                 data-elfsight-popup-version="1.1.0"
+                                                 data-elfsight-widget-id="elfsight-popup-2"></div>
+                                            <div class="elfsight-widget-popup elfsight-widget"
+                                                 data-elfsight-popup-options="%7B%22blocks%22%3A%5B%7B%22id%22%3A%220495cc72-d6c7-42e5-8d5f-b54ca3fd8f83%22%2C%22type%22%3A%22iframe%22%2C%22titleText%22%3A%22Sample%20Title%22%2C%22titleColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22titleFontSize%22%3A24%2C%22titleFontWeight%22%3A400%2C%22textText%22%3A%22%22%2C%22textColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22textFontSize%22%3A17%2C%22bannerFile%22%3Anull%2C%22bannerPosition%22%3A%22right%22%2C%22imageFile%22%3Anull%2C%22imageScale%22%3A100%2C%22videoUrl%22%3A%22%22%2C%22videoAutoplay%22%3Atrue%2C%22couponCode%22%3A%22COUPON%20CODE%22%2C%22couponClickToCopyText%22%3A%22CLICK%20TO%20COPY%22%2C%22couponCopiedText%22%3A%22COPIED%21%22%2C%22couponColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22couponFontSize%22%3A16%2C%22buttonAction%22%3A%22redirect%22%2C%22buttonUrl%22%3A%22%22%2C%22buttonOpenLinkInNewTab%22%3Atrue%2C%22buttonText%22%3A%22Button%20Text%22%2C%22buttonStyle%22%3A%22filled%22%2C%22buttonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22buttonFontSize%22%3A16%2C%22linkAction%22%3A%22redirect%22%2C%22linkUrl%22%3A%22%22%2C%22linkText%22%3A%22Sample%20Text%22%2C%22linkColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22linkFontSize%22%3A17%2C%22separatorColor%22%3A%22rgba%2817%2C%2017%2C%2017%2C%20.2%29%22%2C%22separatorMargin%22%3A0%2C%22spacingSize%22%3A16%2C%22iframeUrl%22%3A%22https%3A%5C%2F%5C%2Fmanage2.mangoforsalon.com%5C%2F%5C%2F%5C%2FBookOnline%3Fparameters%3DqspEHAdbJpKoZ5RYbB7jQWDS70HQDM9cfRgpk5jWWwA%253d%22%2C%22iframeWidth%22%3A%22400%22%2C%22iframeHeight%22%3A900%2C%22htmlCode%22%3A%22%22%2C%22formFields%22%3A%5B%7B%22id%22%3A%22e80f1644-bd32-4789-94f5-4e4063caae5c%22%2C%22type%22%3A%22email%22%2C%22label%22%3A%22Email%22%7D%5D%2C%22formButtonText%22%3A%22Submit%22%2C%22undefined%22%3Anull%2C%22iframeAllowAutoplay%22%3Atrue%2C%22iframeAllowCamera%22%3Afalse%2C%22iframeAllowMicrophone%22%3Afalse%2C%22formSubmitAction%22%3A%22closePopup%22%2C%22formSubmitActionRedirectUrl%22%3A%22%22%2C%22formStyle%22%3A%22filled%22%2C%22formFontSize%22%3A16%2C%22formButtonColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22formInputColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22label%22%3A%22iFrame%22%7D%5D%2C%22layout%22%3A%22modal%22%2C%22width%22%3A400%2C%22popupBlocksAlignment%22%3A%22center%22%2C%22popupShape%22%3A%22rectangle%22%2C%22popupBackgroundColor%22%3A%22rgb%2848%2C%2048%2C%2048%29%22%2C%22popupBackgroundImage%22%3Anull%2C%22popupBackgroundImageOverlayColor%22%3A%22%22%2C%22overlayVisible%22%3Atrue%2C%22overlayClose%22%3Atrue%2C%22overlayBackgroundColor%22%3A%22rgba%2857%2C%2057%2C%2057%2C%200.7%29%22%2C%22overlayBackgroundImage%22%3Anull%2C%22overlayBackgroundImageOverlayColor%22%3Anull%2C%22closeButtonVisible%22%3Atrue%2C%22closeButtonColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22triggerPageLoadEnabled%22%3Afalse%2C%22triggerTimeOnPageEnabled%22%3Afalse%2C%22triggerTimeOnPageDuration%22%3A30%2C%22triggerScrollEnabled%22%3Afalse%2C%22triggerScrollPosition%22%3A50%2C%22triggerScrollToElementEnabled%22%3Afalse%2C%22triggerScrollToElementId%22%3Anull%2C%22triggerClickEnabled%22%3Atrue%2C%22triggerClickElementId%22%3A%22BookAppointment%22%2C%22triggerExitIntentEnabled%22%3Afalse%2C%22displayFrequency%22%3A%22everytime%22%2C%22displayPages%22%3A%22allPages%22%2C%22displayExcludedPages%22%3A%5B%5D%2C%22displaySpecificPages%22%3A%5B%5D%2C%22displayDevices%22%3A%5B%22tablet%22%2C%22mobile%22%2C%22desktop%22%5D%2C%22widgetId%22%3A%221%22%7D"
+                                                 data-elfsight-popup-version="1.1.0"
+                                                 data-elfsight-widget-id="elfsight-popup-1"></div>
+                                            <div class="wpb_text_column wpb_content_element ">
+                                                <div class="wpb_wrapper">
+                                                    <div class="elfsight-widget-countdown-timer elfsight-widget"
+                                                         data-elfsight-countdown-timer-options="%7B%22type%22%3A%22remaining%22%2C%22startTime%22%3A1621359125519%2C%22endTime%22%3A1621791125524%2C%22setTimeZone%22%3Afalse%2C%22timeZone%22%3A%22Etc%5C%2FGMT%2B0%22%2C%22startNumber%22%3A1%2C%22endNumber%22%3A100%2C%22numberFrequency%22%3A%22auto%22%2C%22numberFrequencyValue%22%3A10%2C%22timeValue%22%3A24%2C%22timeUnit%22%3A%22hours%22%2C%22remainingRestartEnabled%22%3Atrue%2C%22remainingRestartValue%22%3A1%2C%22remainingRestartUnit%22%3A%22days%22%2C%22position%22%3A%22top-bar-static%22%2C%22messageBeforeTimer%22%3A%22%3Cdiv%20style%3D%5C%22text-align%3A%20center%3B%5C%22%3EWe%27re%20sorry%2C%20We%20don%27t%20accept%20appointments%20on%20weekends.%3C%5C%2Fdiv%3E%22%2C%22elements%22%3A%5B%5D%2C%22daysLabel%22%3A%22Days%22%2C%22hoursLabel%22%3A%22Hours%22%2C%22minutesLabel%22%3A%22Minutes%22%2C%22secondsLabel%22%3A%22Seconds%22%2C%22timerStopAction%22%3A%22hide%22%2C%22timerStopMessage%22%3A%22The%20countdown%20is%20finished%22%2C%22timerStopCountersVisible%22%3Atrue%2C%22timerStopButtonVisible%22%3Atrue%2C%22timerStopButtonLink%22%3A%22%22%2C%22timerStopButtonText%22%3A%22%22%2C%22timerStopRedirect%22%3A%22%22%2C%22align%22%3A%22center%22%2C%22buttonVisible%22%3Afalse%2C%22buttonLink%22%3A%22https%3A%5C%2F%5C%2Felfsight.com%22%2C%22buttonText%22%3A%22Shop%20now%22%2C%22buttonLinkTargetBlank%22%3Atrue%2C%22areaClickable%22%3Atrue%2C%22style%22%3A%22separated-blocks%22%2C%22theme%22%3A%22default%22%2C%22timerColor%22%3A%22rgb%2863%2C%2063%2C%2063%29%22%2C%22labelsColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22messageColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22buttonColor%22%3A%22rgb%280%2C%200%2C%200%29%22%2C%22backgroundColor%22%3A%22rgb%2839%2C%2039%2C%2039%29%22%2C%22messageFontSize%22%3A20%2C%22timerSize%22%3A32%2C%22buttonSize%22%3A16%2C%22animation%22%3A%22none%22%2C%22widgetId%22%3A%222%22%7D"
+                                                         data-elfsight-countdown-timer-version="1.4.0"
+                                                         data-elfsight-widget-id="elfsight-countdown-timer-2">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        </div>
+        <!-- close div.content_inner -->
+    </div>
+

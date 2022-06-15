@@ -1,0 +1,20 @@
+
+.page-id-24 .eltdf-top-bar {
+    border-bottom: 1px solid rgba(182,221,84,0.13);
+}
+
+.page-id-24 .eltdf-content .eltdf-content-inner > .eltdf-container > .eltdf-container-inner, .page-id-24 .eltdf-content .eltdf-content-inner > .eltdf-full-width > .eltdf-full-width-inner {
+    padding: 0;
+}
+
+.page-id-24 .eltdf-content .eltdf-content-inner > .eltdf-container > .eltdf-container-inner, .page-id-24 .eltdf-content .eltdf-content-inner > .eltdf-full-width > .eltdf-full-width-inner {
+    padding: 0;
+}
+
+.page-id-24 .eltdf-footer-top-holder {
+    background-color: #2d2d2d;
+}
+
+.page-id-24 .eltdf-footer-bottom-holder {
+    background-color: #2d2d2d;
+}

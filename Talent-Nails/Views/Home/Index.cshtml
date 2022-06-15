@@ -1,0 +1,77 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+<div id="et-main-area">
+    <div id="main-content">
+        <article id="post-19" class="post-19 page type-page status-publish hentry">
+            <div class="entry-content">
+                <div class="et-l et-l--post">
+                    <div class="et_builder_inner_content et_pb_gutters3">
+                        <div class="et_pb_section et_pb_section_1 demo-popup-form et_pb_fullwidth_section et_section_regular">
+                            <div class="et_pb_module et_pb_fullwidth_slider_0 demo-popup-form et_pb_slider">
+                                <div class="et_pb_slides">
+                                    <div class="et_pb_slide et_pb_slide_0 et_pb_bg_layout_dark et_pb_media_alignment_center et-pb-active-slide"
+                                         data-slide-id="et_pb_slide_0">
+                                        <div class="et_pb_container clearfix">
+                                            <div class="et_pb_slider_container_inner">
+                                                <div class="et_pb_slide_description"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="page" class="site">
+                            <div id="content" class="site-content">
+                                <div id="demo-sliders">
+                                    <div class="block-parent block-1200">
+                                        <div class="block">
+                                            <h1 class="text-center" style="color:#000; font-size:1.5em; padding: 1em;">
+                                                The most recent releases
+                                            </h1>
+                                            <div class="">
+                                                <div>
+                                                    <div class="" >
+                                                        <div>
+                                                            <div class="columns-3 col-show">
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            @*<div class="sliders">
+
+
+                                            </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+<script type="text/javascript" src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/src/themes/themes-lib.js"></script>
+<script src="~/Scripts/src/themes/theme.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        setTimeout(() => {
+            $('.nav-home').prop('href', '#post-19');
+            $('.nav-templetes').prop('href', '#demo-sliders');
+            console.log($('.nav-home').attr('href'));
+            console.log($('.nav-templetes').attr('href'));
+        }, 500);
+
+        $('.col-show').html(Theme.getTemplete());
+    });
+    
+</script>

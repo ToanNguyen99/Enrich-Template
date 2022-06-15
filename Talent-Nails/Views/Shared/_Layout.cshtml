@@ -1,0 +1,402 @@
+﻿@using Commerce.Services.Customers
+@using Commerce.Web.Framework.Utility
+
+@{
+    var _customerService = DependencyResolver.Current.GetService<ICustomerService>();
+
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Commerce</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Eflyer</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/home/bootstrap.min.css">
+    <link href="/Themes/das-Admin/assets/css/icons.min.css" rel="stylesheet" />
+    <link href="/Themes/das-Admin/assets/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="/Themes/das-Admin/assets/css/app.css" rel="stylesheet" />
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/home/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/Content/home/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="~/Content/home/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+    <!--  -->
+    <!-- owl stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+    @*<link rel="stylesheet" href="owl.carousel.min.css">
+        <link rel="stylesheet" href="owl.theme.default.min.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CLato%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C700%2C700italic%2C900%2C900italic%7CRoboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&display=swap" />
+
+    <link href="~/Scripts/lib/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        .a-log-out {
+            color: #505050 !important;
+            font-size: 13px;
+        }
+
+            .a-log-out:hover {
+                background-color: rgba(0,0,0,0.2) !important;
+                color: #fff !important;
+            }
+
+            .a-log-out span {
+                padding: 5px;
+                position: absolute;
+                justify-content: center;
+                bottom: 15px;
+            }
+    </style>
+
+    @*@Styles.Render("~/Content/cssmain")*@
+    <link href="~/Themes/HomePage/Content/css/HomeTest.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/HomeMango.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/Cachebackup.css" rel="stylesheet" />
+    <link href="~/Themes/HomePage/Content/css/theme.css" rel="stylesheet" />
+    @RenderSection("styles", false)
+    @using Commerce.Web.Framework.Utility
+</head>
+<body class="home page-template-default page page-id-19 theme-Divi et-tb-has-template et-tb-has-footer woocommerce-no-js et_pb_button_helper_class et_fixed_nav et_show_nav et_secondary_nav_enabled et_primary_nav_dropdown_animation_fade et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_svg_logo et_cover_background et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_smooth_scroll et_no_sidebar et_divi_theme et-db et_minified_js et_minified_css elementor-default elementor-kit-2044 elementor-page elementor-page-19">
+
+    <!--New Home page -->
+    <div id="page-container" style="width:100%">
+        <div id="et-boc" class="et-boc">
+            <div id="top-header">
+                <div class="container clearfix">
+                    <div id="et-secondary-menu">
+                        <ul class="et-social-icons" style="margin-top:4px;">
+                            <li class="et-social-icon">
+                                <a href="#" class="icon" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>Facebook</span>
+                                </a>
+                            </li>
+                            <li class="et-social-icon">
+                                <a href="#" class="icon" target="_blank">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>Instagram</span>
+                                </a>
+                            </li>
+                            <li class="et-social-icon">
+                                <a href="#" class="icon" target="_blank">
+                                    <i class="fab fa-youtube-square"></i>
+                                    <span>Youtube</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul id="et-secondary-nav" class="menu">
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="dropdown">
+                                    <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" href="#" data-toggle="dropdown" role="button"
+                                       aria-haspopup="false" aria-expanded="false" id="dropdownMenuButton" style="margin-top:-8px;">
+                                        <span class="ml-1 nav-user-name hidden-sm">@ClaimExtension.GetClaimName()</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-user align-self-center icon-xs icon-dual mr-1" style="color:#fff;">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                        @{
+                                            var user = _customerService.GetCustomerByEmail(ClaimExtension.GetClaimEmail());
+                                            if (_customerService.IsSuperAdmin(user))
+                                            {
+                                                <a class="dropdown-item a-log-out" href="@Url.Action("index","home", new { Area="Manage"})">
+
+                                                    <i class="fa fa-archive align-self-center icon-xs icon-dual mr-1"></i>
+                                                    <span style="bottom:inherit; margin-top:-3px;"> Manage page</span>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a class="dropdown-item a-log-out" href="@Url.Action("index","home", new { Area="Admin"})">
+
+                                                    <i class="fa fa-archive align-self-center icon-xs icon-dual mr-1"></i>
+                                                    <span style="bottom:inherit; margin-top:-3px;">Manage page</span>
+                                                </a>
+                                            }
+                                        }
+
+
+                                        <a class="dropdown-item a-log-out" href="@Url.Action("signout","customer", new { Area=""})">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-power align-self-center icon-xs icon-dual mr-1">
+                                                <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                                                <line x1="12" y1="2" x2="12" y2="12"></line>
+                                            </svg>
+                                            <span style="bottom:inherit; margin-top:-3px;">Logout</span>
+                                        </a>
+
+                                    </div>
+
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1532" style="padding-left:8px">
+                                    <a href="@Url.Action("Login", "customer", new { Area = "" })" style="padding-top:5px;">Login</a>
+                                </li>
+                                @*<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1532">
+                                        <a href="@Url.Action("register","customer")">Register</a>
+                                    </li>*@
+                            }
+                        </ul>
+                        <a href="https://mangoforsalon.com/cart/" class="shoppinng-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>0 Items</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <header id="main-header" data-height-onload="66">
+                <div class="container clearfix et_menu_container">
+                    <div class="logo_container">
+                        <span class="logo_helper"></span> <a href="#">
+                            <img src="https://mangoforsalon.com/wp-content/uploads/2020/02/Mango-For-Salon-logo.svg"
+                                 alt="Mango For Salon" id="logo" data-height-percentage="54" />
+                        </a>
+                    </div>
+                    <div id="et-top-navigation" data-height="66" data-fixed-height="40">
+                        <nav id="top-menu-nav">
+                            <ul id="top-menu" class="nav">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-19 current_page_item menu-item-21">
+                                    <a href="/Home" class="nav-home" aria-current="page">HOME</a>
+                                </li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3216">
+                                    <a href="#" class=" text-uppercase">SOLUTIONS<i class="fas fa-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/Booking">Booking</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/CheckIn">CheckIn</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/Pay">Pay</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/Tech">Tech</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/Salon-Center">Salon Center</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="https://mangoforsalon.com/Management">Management</a>
+                                        </li>
+                                        <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                                            <a href="/Home/#demo-sliders" class="nav-templetes">Web & Templates</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                @*<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3216">
+                                        <a href="#">PRICING</a>
+                                    </li>*@
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1352">
+                                    <a href="#">ABOUT US</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22">
+                                    <a href="#">CONTACT US</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                        <div id="et_mobile_nav_menu">
+                            <div class="mobile_nav closed">
+                                <span class="select_page">Select Page</span></i> <span class="mobile_menu_bar mobile_menu_bar_toggle"><i class="fas fa-bars"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+            @RenderBody()
+
+            <footer class="et-l et-l--footer">
+                <div class="et_builder_inner_content et_pb_gutters3">
+                    <div class="et_pb_section et_pb_section_0_tb_footer et_pb_with_background et_section_regular">
+                        <div class="et_pb_row et_pb_row_0_tb_footer">
+                            <div class="et_pb_column et_pb_column_1_4 et_pb_column_0_tb_footer  et_pb_css_mix_blend_mode_passthrough">
+                                <div class="et_pb_module et_pb_text et_pb_text_0_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p><strong>MangoForSalon.com</strong></p>
+                                        <p>Norcross, GA</p>
+                                        <p>
+                                            <span>Powered by Enrich &amp; Co</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="et_pb_column et_pb_column_1_4 et_pb_column_1_tb_footer  et_pb_css_mix_blend_mode_passthrough">
+                                <div class="et_pb_module et_pb_text et_pb_text_1_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p><strong>SUPPORT</strong></p>
+                                    </div>
+                                </div>
+                                <div class="et_pb_module et_pb_text et_pb_text_2_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p>
+                                            <a href="https://mangoforsalon.com/shipping/">Shipping &amp; Handling</a>
+                                        </p>
+                                        <p>
+                                            <a href="https://mangoforsalon.com/returns-exchanges/">
+                                                Returns &amp;
+                                                Exchanges
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="et_pb_module et_pb_toggle et_pb_toggle_0_tb_footer et_pb_toggle_item  et_pb_toggle_close">
+                                    <h5 class="et_pb_toggle_title">Company Info</h5>
+                                    <div class="et_pb_toggle_content clearfix">
+                                        <ul style="list-style-type: none;">
+                                            <li>
+                                                <a href="https://mangoforsalon.com/terms-of-service/">
+                                                    Terms of
+                                                    Service
+                                                </a>
+                                            </li>
+                                            <li><a href="https://mangoforsalon.com/privacy/">Privacy Policy</a></li>
+                                            <li>
+                                                <a href="https://mangoforsalon.com/cancellation/">
+                                                    Cancellation
+                                                    Policy
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="et_pb_module et_pb_text et_pb_text_3_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p><a href="https://mangoforsalon.com/contact-us/">Contact Us</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="et_pb_column et_pb_column_1_4 et_pb_column_2_tb_footer  et_pb_css_mix_blend_mode_passthrough">
+                                <div class="et_pb_module et_pb_text et_pb_text_4_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p><strong>GET IN TOUCH</strong></p>
+                                        <p>+1 (404) 902-5252</p>
+                                        <p>
+                                            <a href="mailto:hello@mangoforsalon.com">
+                                                <i class="fas fa-envelope"></i>
+                                                <span id="info_email">hello@mangoforsalon.com</span>
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="et_pb_column et_pb_column_1_4 et_pb_column_3_tb_footer  et_pb_css_mix_blend_mode_passthrough et-last-child">
+                                <div class="et_pb_module et_pb_text et_pb_text_5_tb_footer  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <div class="et_pb_text_inner">
+                                        <p><strong>FOLLOW US</strong></p>
+                                    </div>
+                                </div>
+                                <ul class="et_pb_module et_pb_social_media_follow et_pb_social_media_follow_0_tb_footer clearfix  et_pb_text_align_left et_pb_bg_layout_light">
+                                    <li class='et_pb_with_border et_pb_social_media_follow_network_0_tb_footer et_pb_social_icon et_pb_social_network_link  et_pb_social_media_follow_network_0_tb_footer'>
+                                        <a href='https://www.facebook.com/Mangoforsalon/' class='icon et_pb_with_border'
+                                           title='Follow on Facebook' target="_blank">
+                                            <i class="fab fa-facebook"></i>
+                                            <span class='et_pb_social_media_follow_network_name'
+                                                  aria-hidden='true'>Follow</span>
+                                        </a>
+                                    </li>
+                                    <li class='et_pb_social_media_follow_network_1_tb_footer et_pb_social_icon et_pb_social_network_link et_pb_social_media_follow_network_1_tb_footer'>
+                                        <a href='https://www.instagram.com/mangoforsalonofficial/'
+                                           class='icon et_pb_with_border' title='Follow on Instagram' target="_blank">
+                                            <i class="fab fa-instagram"></i>
+                                            <span class='et_pb_social_media_follow_network_name'
+                                                  aria-hidden='true'>Follow</span>
+                                        </a>
+                                    </li>
+                                    <li class='et_pb_social_media_follow_network_2_tb_footer et_pb_social_icon et_pb_social_network_link et_pb_social_media_follow_network_2_tb_footer'>
+                                        <a href='https://www.youtube.com/channel/UCODmUMW94f13guqJBy4UeQg/videos'
+                                           class='icon et_pb_with_border' title='Follow on Youtube' target="_blank">
+                                            <i class="fab fa-youtube"></i>
+                                            <span class='et_pb_social_media_follow_network_name'
+                                                  aria-hidden='true'>Follow</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <link href="~/Content/home/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <script src="~/Scripts/lib/sweetalert2/sweetalert2.all.min.js"></script>
+    <script>
+        const Toasts = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000,
+            background: '#FCB615',
+            width: '300px'
+        });
+    </script>
+    <script src="~/Scripts/src/general/main.js"></script>
+    <script src="~/Content/home/custom.js"></script>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script type="text/javascript" src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <script type='text/javascript' id='divi-custom-script-js-extra'>
+/* <![CDATA[ */ var DIVI = { "item_count": "%d Item", "items_count": "%d Items" };
+            var et_shortcodes_strings = { "previous": "Previous", "next": "Next" };
+            var et_pb_custom = { "ajaxurl": "https:\/\/mangoforsalon.com\/wp-admin\/admin-ajax.php", "images_uri": "https:\/\/mangoforsalon.com\/wp-content\/themes\/Divi\/images", "builder_images_uri": "https:\/\/mangoforsalon.com\/wp-content\/themes\/Divi\/includes\/builder\/images", "et_frontend_nonce": "4f36ff8c23", "subscription_failed": "Please, check the fields below to make sure you entered the correct information.", "et_ab_log_nonce": "c5584354fb", "fill_message": "Please, fill in the following fields:", "contact_error_message": "Please, fix the following errors:", "invalid": "Invalid email", "captcha": "Captcha", "prev": "Prev", "previous": "Previous", "next": "Next", "wrong_captcha": "You entered the wrong number in captcha.", "ignore_waypoints": "no", "is_divi_theme_used": "1", "widget_search_selector": ".widget_search", "ab_tests": [], "is_ab_testing_active": "", "page_id": "19", "unique_test_id": "", "ab_bounce_rate": "5", "is_cache_plugin_active": "yes", "is_shortcode_tracking": "", "tinymce_uri": "" }; var et_frontend_scripts = { "builderCssContainerPrefix": "#et-boc", "builderCssLayoutPrefix": "#et-boc .et-l" };
+            var et_pb_box_shadow_elements = []; /* ]]> */</script>
+
+
+</body>
+</html>

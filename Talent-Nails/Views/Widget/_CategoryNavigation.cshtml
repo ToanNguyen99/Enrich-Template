@@ -1,0 +1,32 @@
+﻿@using Commerce.UI.Models.Catalog
+@using Commerce.Core.Domain.Templates 
+@model CategoryNavigationModel
+@if (Model.Categories.Count > 0)
+{
+    if (Model.DefaultStoreTheme == ThemeName.MangoM9DTU)
+    {
+
+    }
+    else
+    {
+        <div class="block block-category-navigation">
+            <div class="title">
+                <strong>Danh mục</strong>
+            </div>
+            <div class="listbox">
+                <ul class="list">
+                    @foreach (var category in Model.Categories)
+                    {
+                        var categoryLineModel = new CategoryNavigationModel.CategoryLineModel
+                        {
+                            CurrentCategoryId = Model.CurrentCategoryId,
+                            Category = category
+                        };
+                        @Html.Partial("_CategoryLineNavigation", categoryLineModel)
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+}

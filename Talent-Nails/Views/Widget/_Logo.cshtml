@@ -1,0 +1,43 @@
+﻿@using Commerce.UI.Models.Common
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+
+@model LogoModel
+
+@{
+//int storeId = ViewBag.StoreId;
+//var settingService = DependencyResolver.Current.GetService<ISettingService>();
+//var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(storeId);
+}
+
+@if (!string.IsNullOrEmpty(Model.LogoPath))
+{
+    if (Model.showMobile)
+    {
+        <div class="eltdf-mobile-logo-wrapper">
+            <a itemprop="url" href="" style="height: 60px">
+
+                <img itemprop="image" src="@Model.LogoPath"
+                      alt="Mobile Logo" />
+            </a>
+        </div>
+    }
+    else
+    {
+        <div class="eltdf-logo-wrapper">
+            <a itemprop="url" href="" style="height: 60px;">
+
+                <img itemprop="image" class="eltdf-normal-logo"
+                     src="@Model.LogoPath" 
+                      />
+                <img itemprop="image" class="eltdf-dark-logo"
+                     src="@Model.LogoPath" 
+                      />
+                <img itemprop="image" class="eltdf-light-logo"
+                     src="@Model.LogoPath" 
+                     />
+            </a>
+        </div>
+    }
+}

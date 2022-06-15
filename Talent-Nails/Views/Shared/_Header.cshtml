@@ -1,0 +1,316 @@
+﻿@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+@{
+
+    var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(Model.Store.Id);
+    string currentController = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+}
+
+@switch (storeInformationSettings.DefaultStoreTheme)
+{
+    case ThemeName.QueenNails:
+        {
+            <div class="header">
+                <div class="top-nav">
+                    <nav>
+                        <div class="container container2">
+                            <div class="top-header">
+                                <div class="logo">
+                                    <h1>
+                                        @Html.Action("Logo", "Widget", new { id = Model.Store.Id })
+                                    </h1>
+                                </div>
+                                @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id })
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+            break;
+        }
+    case ThemeName.SpaMagic:
+        {
+            <div class="header">
+                <!--menu-->
+                <div class="header-wrapper">
+
+                    @*<div class="mobileheader clearfixed">
+                            <span class="smllogo">
+                                <img src="/Themes/SpaMagic/Content/images/logo-01.png" width="170" height="50">
+                            </span>
+                            <a id="navtoggle" class="animated-arrow"><span></span></a>
+                        </div>*@
+                    @Html.Action("LogoMobi", "Widget", new { id = Model.Store.Id })
+                    <div class="mainfull clearfixed">
+                        <div class="maincontainer clearfixed">
+                            @Html.Action("Logo", "Widget", new { id = Model.Store.Id })
+                            @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id })
+
+                        </div>
+                    </div>
+                </div>
+
+                @Html.Action("Slider", "Widget", new { id = Model.Store.Id })
+            </div>
+            break;
+        }
+    case ThemeName.MangoM9DTU:
+        {
+
+            <aside class="sigma_aside sigma_aside-right sigma_aside-right-panel sigma_aside-bg">
+                <div class="sidebar">
+                    <div class="sidebar-widget widget-logo">
+                        @Html.Action("Logo", "Widget", new { @id = Model.Store.Id, className = "" })
+                        <p>Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Donec rutrum congue leo eget malesuada. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
+                    </div>
+                    <!-- Social Media Start -->
+                    <div class="sidebar-widget">
+                        <h5 class="widget-title">Follow Us</h5>
+                        <div class="sigma_post-share">
+                            @Html.Action("SocialButtons", "Widget", new { id = Model.Store.Id, isStyle = true })
+                        </div>
+                    </div>
+                    <!-- Social Media End -->
+
+                </div>
+            </aside>
+            <div class="sigma_aside-overlay aside-trigger-right"></div>
+
+            <!-- Aside (Mobile Navigation) -->
+            <aside class="sigma_aside sigma_aside-left">
+                @Html.Action("Logo", "Widget", new { @id = Model.Store.Id, className = "navbar-brand" })
+
+                @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id, mobile = true })
+
+
+            </aside>
+            <div class="sigma_aside-overlay aside-trigger-left"></div>
+            <header class="sigma_header header-3 header-fw can-sticky">
+
+                <!-- Topheader Start -->
+                <div class="sigma_header-top">
+                    <div class="container">
+                        <div class="sigma_header-top-inner">
+                            @Html.Action("HeaderLinks", "Widget", new { id = Model.Store.Id })
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Topheader End -->
+                <!-- Middle Header Start -->
+                <div class="sigma_header-middle">
+                    <div class="container">
+                        <nav class="navbar">
+
+                            <!-- Logo Start -->
+                            <div class="sigma_logo-wrapper">
+                                @Html.Action("Logo", "Widget", new { @id = Model.Store.Id, className = "navbar-brand" })
+                            </div>
+                            <!-- Logo End -->
+
+                            <div class="sigma_header-controls style-2">
+                                <ul class="sigma_header-controls-inner">
+                                    <!-- Desktop Toggler -->
+                                    <li class="aside-toggler style-2 aside-trigger-right desktop-toggler">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Menu -->
+                            @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id, mobile = false })
+
+
+                            <!-- Controls -->
+                            <div class="sigma_header-controls style-2">
+
+                                <ul class="sigma_header-controls-inner">
+                                    <!-- Mobile Toggler -->
+                                    <li class="aside-toggler style-2 aside-trigger-left">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </nav>
+                    </div>
+                </div>
+                <!-- Middle Header End -->
+                <!-- Bottom Header Start -->
+                <div class="sigma_header-bottom">
+                    <div class="container">
+
+                        <div class="sigma_header-bottom-inner">
+
+                            <!-- Menu -->
+                            <ul class="navbar-nav"></ul>
+
+                            <div class="sigma_post-share sigma_sm_li">
+                                @Html.Action("SocialButtons", "Widget", new { id = Model.Store.Id })
+
+                            </div>
+
+                            <div class="sigma_header-bottom-cta">
+                                <a href="javascript:void(0);" class="sigma_btn-custom appointmentframe">Book Now</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Bottom Header End -->
+
+            </header>
+
+            break;
+        }
+
+    case ThemeName.MangoNGP5D:
+        {
+
+            @Html.Action("Slider", "Widget", new { id = Model.Store.Id })
+            break;
+        }
+    case ThemeName.MangoUBWTC:
+        {
+
+            @Html.Action("Slider", "Widget", new { id = Model.Store.Id })
+            break;
+        }
+    case ThemeName.MangoIYM8K:
+        {
+
+            <!-- main banner -->
+            @Html.Action("Slider", "Widget", new { id = Model.Store.Id })
+
+            <!-- //main banner -->
+            break;
+        }
+    case ThemeName.MangoS8HOL:
+        <div id="Header_wrapper" class="">
+            <header id="Header">
+                <div class="header_placeholder"></div>
+                @Html.Action("Topmenu", "Widget", new { id = Model.Store.Id })
+
+                @if (currentController == "Store")
+                {
+                    <div class="mfn-main-slider mfn-rev-slider">
+                        <!-- START Home Jeweler3 REVOLUTION SLIDER 6.2.17 -->
+                        <p class="rs-p-wp-fix"></p>
+                        <rs-module-wrap id="rev_slider_4_1_wrapper" data-source="gallery" style="padding:0;margin:0px auto;margin-top:0;margin-bottom:0;max-width:;">
+                            <rs-module id="rev_slider_4_1" data-version="6.2.17">
+                                <rs-slides>
+                                    <rs-slide data-key="rs-4" data-title="Slide" data-anim="ei:d;eo:d;s:300;r:0;t:boxfade;sl:7;">
+                                        <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201920%201334'%3E%3C/svg%3E" title="home_jeweller_bg" width="1920" height="1334" data-bg="r:repeat;" class="rev-slidebg"
+                                             data-no-retina data-lazy-src="../Themes/Mango-S8HOL/wp-content/uploads/2015/01/home_jeweller_bg-1.jpg">
+
+
+
+                                        <rs-layer id="slider-4-slide-4-layer-1" data-type="image" data-rsp_ch="on" data-xy="x:-4px;y:b;" data-text="l:22;a:inherit;" data-dim="w:757px;h:700px;" data-frame_0="x:-50px;" data-frame_1="st:500;sp:800;sR:500;" data-frame_999="st:w;auto:true;" style="z-index:5;">
+                                            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20732%20677'%3E%3C/svg%3E" width="732" height="677" data-no-retina data-lazy-src="../Themes/Mango-S8HOL/wp-content/uploads/revslider/home_jeweller_slider1-1-1.png">
+
+                                        </rs-layer>
+
+                                        <rs-layer id="slider-4-slide-4-layer-3" data-type="image" data-rsp_ch="on" data-xy="x:c;xo:331px;y:145px;" data-text="w:normal;" data-dim="w:237px;h:312px;" data-frame_1="st:1100;sp:800;sR:1100;" data-frame_999="o:0;st:w;sR:7100;" style="z-index:7;">
+                                            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20400%20527'%3E%3C/svg%3E" width="400" height="527" data-no-retina data-lazy-src="../Themes/Mango-S8HOL/wp-content/uploads/2020/08/logonew1.png">
+
+                                        </rs-layer>
+
+                                    </rs-slide>
+                                </rs-slides>
+                            </rs-module>
+                            <script type="text/javascript">
+                                window.addEventListener('DOMContentLoaded', function () {
+                                    setREVStartSize({
+                                        c: 'rev_slider_4_1',
+                                        rl: [1240, 1024, 778, 480],
+                                        el: [700],
+                                        gw: [1176],
+                                        gh: [700],
+                                        type: 'standard',
+                                        justify: '',
+                                        layout: 'fullwidth',
+                                        mh: "0"
+                                    });
+                                    var revapi4, tpj;
+                                    jQuery(function () {
+                                        tpj = jQuery;
+                                        revapi4 = tpj("#rev_slider_4_1");
+                                        tpj.noConflict();
+                                        if (revapi4 == undefined || revapi4.revolution == undefined) {
+                                            revslider_showDoubleJqueryError("rev_slider_4_1");
+                                        } else {
+                                            revapi4.revolution({
+                                                visibilityLevels: "1240,1024,778,480",
+                                                gridwidth: 1176,
+                                                gridheight: 700,
+                                                spinner: "spinner2",
+                                                perspective: 600,
+                                                perspectiveType: "local",
+                                                editorheight: "700,768,960,720",
+                                                responsiveLevels: "1240,1024,778,480",
+                                                progressBar: {
+                                                    disableProgressBar: true
+                                                },
+                                                navigation: {
+                                                    mouseScrollNavigation: false,
+                                                    touch: {
+                                                        touchenabled: true
+                                                    }
+                                                },
+                                                fallbacks: {
+                                                    allowHTML5AutoPlayOnAndroid: true
+                                                },
+                                            });
+                                        }
+
+                                    });
+                                });
+                            </script>
+                            <script>
+                                var htmlDivCss = ' #rev_slider_4_1_wrapper rs-loader.spinner2{ background-color: #FFFFFF !important; } ';
+                                var htmlDiv = document.getElementById('rs-plugin-settings-inline-css');
+                                if (htmlDiv) {
+                                    htmlDiv.innerHTML = htmlDiv.innerHTML + htmlDivCss;
+                                } else {
+                                    var htmlDiv = document.createElement('div');
+                                    htmlDiv.innerHTML = '<style>' + htmlDivCss + '</style>';
+                                    document.getElementsByTagName('head')[0].appendChild(htmlDiv.childNodes[0]);
+                                }
+                            </script>
+                        </rs-module-wrap>
+                        <!-- END REVOLUTION SLIDER -->
+                    </div>
+                }
+
+            </header>
+        </div>
+        break;
+    case ThemeName.MangoPS6P6:
+        <header class="cs-header">
+
+            <!-- Topbar -->
+            @Html.Action("HeaderLinks","Widget", new {id = Model.Store.Id })
+            
+
+            <!-- Navbar -->
+            <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+            @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id })
+        </header>
+        break;
+    default:
+        break;
+}

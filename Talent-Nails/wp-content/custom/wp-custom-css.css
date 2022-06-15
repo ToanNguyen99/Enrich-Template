@@ -1,0 +1,80 @@
+
+.mbhi-is-current {
+    background-color: #7983ff;
+    color: white;
+}
+
+.eltdf-testimonials-holder.eltdf-testimonials-standard .eltdf-testimonial-image:before {
+    content: '’’';
+    font-family: "Playfair Display",serif;
+    position: absolute;
+    right: 106px;
+    top: 29px;
+    display: inline-block;
+    font-size: 130px;
+    letter-spacing: -7px;
+    color: #b6dd548c;
+}
+
+.eltdf-page-footer .eltdf-footer-top-holder {
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(182,221,84,0.13);
+}
+
+wpfm-template-14 .wpfm-menu-link .wpfm-icon-block img, .wpfm-template-15 .wpfm-menu-link .wpfm-icon-block img, .wpfm-template-14 .wpfm-menu-link .wpfm-icon-block i, .wpfm-template-15 .wpfm-menu-link .wpfm-icon-block i {
+    height: 60px;
+    width: 60px;
+}
+
+
+.eltdf-cutom-image.wpb_column.vc_column_container {
+    z-index: 999;
+}
+
+.vc_custom_1527594589607 {
+    padding-top: 57px !important;
+}
+
+.vc_custom_1527604419529 {
+    padding-top: 18px !important;
+    padding-bottom: 82px !important;
+}
+
+.vc_custom_1609545202641 {
+    padding-top: 96px !important;
+    padding-bottom: 154px !important;
+}
+
+.vc_custom_1527599959680 {
+    margin-right: 3.5% !important;
+    margin-left: 3.5% !important;
+}
+
+.vc_custom_1613660917025 {
+    padding-top: 130px !important;
+    padding-bottom: 0px !important;
+}
+
+.vc_custom_1609766649990 {
+    padding-bottom: 100px !important;
+}
+
+.vc_custom_1527602752613 {
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+
+.vc_custom_1527599950101 {
+    margin-top: -85px !important;
+}
+.vc_custom_1609836778624{
+    padding-top: 200px !important;
+    padding-bottom: 100px !important;
+}
+.vc_custom_1530020546735 {
+    padding-top: 130px !important;
+    padding-bottom: 115px !important;
+}
+.vc_custom_1530111360363 {
+    padding-bottom: 83px !important;
+}

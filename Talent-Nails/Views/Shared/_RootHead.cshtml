@@ -1,0 +1,41 @@
+﻿@using Commerce.Web.Framework.UI
+@using Commerce.Services.Configuration;
+@using Commerce.Core.Domain;
+@{ 
+    var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    var storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(Model.Store.Id);
+
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@Html.ComTitle((int)Model.Store.Id)</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="@(Html.ComMetaDescription())" />
+    <meta name="keywords" content="@(Html.ComMetaKeywords())" />
+    <meta name="generator" content="cabarkey" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @* load css header *@
+
+    @Html.Partial($"~/Themes/{storeInformationSettings.DefaultStoreTheme}/Views/Shared/Head.cshtml")
+
+    @Html.ComCssFiles(this.Url, ResourceLocation.Head)
+
+    @Html.Action("Favicon", "Widget", new { id = Model.Store.Id })
+    @Html.ComScript(this.Url, ResourceLocation.Head)
+
+    @Html.Action("Favicon","Widget", new { id = Model.Store.Id })
+</head>
+<body>
+    @RenderBody()
+
+    @Html.ComScript(this.Url, ResourceLocation.Footer)
+    <script>
+        var app_base = '@Url.Content("~/")'
+
+    </script>
+
+</body>
+</html>

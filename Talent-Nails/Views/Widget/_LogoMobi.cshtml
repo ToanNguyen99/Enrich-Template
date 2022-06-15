@@ -1,0 +1,26 @@
+﻿@using Commerce.UI.Models.Common
+@using Commerce.Services.Configuration
+@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+
+@model LogoModel
+
+
+@if (string.IsNullOrWhiteSpace(Model.LogoPath))
+{
+    <div class="mobileheader clearfixed">
+        <span class="smllogo">
+            <img src="~/Themes/DefaultImage/Mango-For-Salon-logo.svg" width="170" height="50">
+        </span>
+        <a id="navtoggle" class="animated-arrow"><span></span></a>
+    </div>
+}
+else
+{
+    <div class="mobileheader clearfixed">
+        <span class="smllogo">
+            <img src="@Model.LogoPath" width="170" height="50">
+        </span>
+        <a id="navtoggle" class="animated-arrow"><span></span></a>
+    </div>
+}

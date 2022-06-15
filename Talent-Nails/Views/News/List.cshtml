@@ -1,0 +1,255 @@
+﻿@using Commerce.UI.Models.News
+@using Commerce.Core.Domain.Templates
+@model NewsItemListModel
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+    
+}
+@switch (Model.DefaultStoreTheme)
+{
+    case ThemeName.MangoS8HOL:
+        <div id="Subheader">
+            <div class="container">
+                <div class="column one">
+                    <h1 class="title">BLOG</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="Content">
+            <div class="content_wrapper clearfix">
+                <div class="sections_group">
+                    <div class="entry-content" itemprop="mainContentOfPage">
+                        <div data-bg="@linkbase/wp-content/uploads/2015/01/home_jeweller_bg-1.jpg" class="section mcb-section mcb-section-ylzcqqggh rocket-lazyload" style="background-repeat:repeat;background-position:center">
+                            <div class="section_wrapper mcb-section-inner">
+                                <div class="wrap mcb-wrap mcb-wrap-yn6hi77n3 one  valign-top clearfix" style="">
+                                    <div class="mcb-wrap-inner">
+                                        <div class="column mcb-column mcb-item-a8rt5juwg one column_blog_news">
+                                            <div class="Latest_news featured">
+                                                @if (Model.NewsItems.Count > 0)
+                                                {
+                                                <ul class="ul-first">
+                                                    @if (!string.IsNullOrWhiteSpace(Model.NewsItems[0].Full))
+                                                    {
+                                                        <li class="post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                                            <div class="photo">
+                                                                <a href="@Url.Action("NewsItem","News", new {id = Model.Store.Id,  newsItemId = Model.NewsItems[0].Id })">
+                                                                    @{
+                                                                        var matchString = System.Text.RegularExpressions.Regex.Match(Model.NewsItems[0].Full, "<img.+?src=[\"'](.+?)[\"'].*?>", System.Text.RegularExpressions.RegexOptions.IgnoreCase).Groups[1].Value;
+                                                                        if (@matchString != "")
+                                                                        {
+                                                                              <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt=""
+                                                                                   data-lazy-srcset="@matchString 900w, 
+                                                                                   @matchString 300w, 
+                                                                                   @matchString 768w,
+                                                                                   @matchString 239w,
+                                                                                   @matchString 50w,
+                                                                                   @matchString 123w" 
+                                                                                   data-lazy-sizes="(max-width: 900px) 100vw, 900px" 
+                                                                                   data-lazy-src="@matchString" />
+                                                                        }
+                                                                    }
+                                                                    
+                                                                </a>
+                                                            </div>
+                                                            <div class="desc">
+                                                                <h4>
+                                                                    <a href="@Url.Action("NewsItem","News", new {id = Model.Store.Id,  newsItemId = Model.NewsItems[0].Id })">@Model.NewsItems[0].Title</a>
+                                                                </h4>
+                                                                <div class="desc_footer">
+                                                                    <span class="date">
+                                                                        <i class="icon-clock"></i>
+                                                                        @Model.NewsItems[0].CreatedOn.ToString("MMMMM dd, yyyy")
+                                                                    </span>
+                                                                    <div class="button-love"></div>
+                                                                </div>
+                                                                <div class="post-excerpt">@Html.Raw(Model.NewsItems[0].Short)</div>
+                                                            </div>
+                                                        </li>
+                                                    }
+
+                                                </ul>
+                                                }
+                                                @if (Model.NewsItems.Count > 1)
+                                                {
+                                            <ul class="ul-second">
+                                                @for (int i = 1; i < Model.NewsItems.Count; i++)
+                                                {
+                                                    <li class="post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                                        <div class="photo">
+                                                            <a href="@Url.Action("NewsItem","News", new {id = Model.Store.Id,  newsItemId = Model.NewsItems[i].Id })">
+                                                                @{
+                                                                    var matchString = System.Text.RegularExpressions.Regex.Match(Model.NewsItems[i].Full, "<img.+?src=[\"'](.+?)[\"'].*?>", System.Text.RegularExpressions.RegexOptions.IgnoreCase).Groups[1].Value;
+                                                                    if (matchString != "")
+                                                                    {
+                                                                        <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt=""
+                                                                             data-lazy-srcset="@matchString 900w,
+                                                                     @matchString 300w,
+                                                                     @matchString 768w,
+                                                                     @matchString 239w,
+                                                                     @matchString 50w,
+                                                                     @matchString 123w"
+                                                                             data-lazy-sizes="(max-width: 900px) 100vw, 900px"
+                                                                             data-lazy-src="@matchString" />
+                                                                    }
+                                                                }
+
+
+                                                            </a>
+                                                        </div>
+                                                        <div class="desc">
+                                                            <h5>
+                                                                <a href="@Url.Action("NewsItem","News", new {id = Model.Store.Id,  newsItemId = Model.NewsItems[i].Id })">@Model.NewsItems[i].Title</a>
+                                                            </h5>
+                                                            <div class="desc_footer">
+                                                                <span class="date">
+                                                                    <i class="icon-clock"></i>
+                                                                    @Model.NewsItems[i].CreatedOn.ToString("MMMMM dd, yyyy")
+                                                                </span>
+                                                                <div class="button-love"></div>
+                                                            </div>
+                                                            <div class="post-excerpt">@Html.Raw(Model.NewsItems[i].Short)</div>
+                                                        </div>
+                                                    </li>
+                                                                    }
+
+
+                                                @*<li class="post-2454 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                                    <div class="photo">
+                                                        <a href="https://trianglenailsbar.com/playing-footsie/">
+                                                            <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt="" data-lazy-srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9.jpg 900w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-300x183.jpg 300w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-768x469.jpg 768w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-239x146.jpg 239w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-50x31.jpg 50w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-123x75.jpg 123w" data-lazy-sizes="(max-width: 900px) 100vw, 900px" data-lazy-src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9.jpg" />
+
+                                                        </a>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h5>
+                                                            <a href="https://trianglenailsbar.com/playing-footsie/">Playing Footsie</a>
+                                                        </h5>
+                                                        <div class="desc_footer">
+                                                            <span class="date">
+                                                                <i class="icon-clock"></i>
+                                                                August 27, 2020
+                                                            </span>
+                                                            <div class="button-love"></div>
+                                                        </div>
+                                                        <div class="post-excerpt">Our feet may spend the majority of winter stuffed into our favorite shade of Hunter Boots, but that doesn’t mean we shouldn’t be taking care of them.</div>
+                                                    </div>
+                                                </li>
+                                                <li class="post-2443 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                                    <div class="photo">
+                                                        <a href="https://trianglenailsbar.com/happy-national-relaxation-day/">
+                                                            <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt="" data-lazy-srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5.jpg 900w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-300x183.jpg 300w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-768x469.jpg 768w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-239x146.jpg 239w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-50x31.jpg 50w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-123x75.jpg 123w" data-lazy-sizes="(max-width: 900px) 100vw, 900px" data-lazy-src="@linkbase/wp-content/uploads/2020/08/image-blog-5.jpg" />
+
+                                                        </a>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h5>
+                                                            <a href="https://trianglenailsbar.com/happy-national-relaxation-day/">Happy National Relaxation Day</a>
+                                                        </h5>
+                                                        <div class="desc_footer">
+                                                            <span class="date">
+                                                                <i class="icon-clock"></i>
+                                                                August 27, 2020
+                                                            </span>
+                                                            <div class="button-love"></div>
+                                                        </div>
+                                                        <div class="post-excerpt">Happy National Relaxation Day! One of the best ways to tap into a more relaxed and balanced state after a hectic day or week is to take a moment to yourself and decompress.</div>
+                                                    </div>
+                                                </li>
+                                                <li class="post-2426 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                                    <div class="photo">
+                                                        <a href="https://trianglenailsbar.com/nail-trends-youll-fall-for/">
+                                                            <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt="" data-lazy-srcset="@linkbase/wp-content/uploads/2020/08/blog-header_9.jpg 900w, @linkbase/wp-content/uploads/2020/08/blog-header_9-300x183.jpg 300w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-768x469.jpg 768w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-239x146.jpg 239w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-50x31.jpg 50w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-123x75.jpg 123w" data-lazy-sizes="(max-width: 900px) 100vw, 900px" data-lazy-src="@linkbase/wp-content/uploads/2020/08/blog-header_9.jpg" />
+
+                                                        </a>
+                                                    </div>
+                                                    <div class="desc">
+                                                        <h5>
+                                                            <a href="https://trianglenailsbar.com/nail-trends-youll-fall-for/">Nail Trends You &#8217;ll Fall For</a>
+                                                        </h5>
+                                                        <div class="desc_footer">
+                                                            <span class="date">
+                                                                <i class="icon-clock"></i>
+                                                                August 26, 2020
+                                                            </span>
+                                                            <div class="button-love"></div>
+                                                        </div>
+                                                        <div class="post-excerpt">
+                                                            The season of pumpkin spice lattes, changing leaves and chunky knits is coming with new fall nail trends to match. Looking to stay ahead of the Instagram curve?
+                                                        </div>
+                                                    </div>
+                                                </li>*@
+                                            </ul>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                        <div class="column mcb-column mcb-item-3m5mjro78 one-fourth column_column">
+                                            <div class="column_attr clearfix" style="">
+                                                <div class="elfsight-widget-social-icons elfsight-widget" data-elfsight-social-icons-options="%7B%22items%22%3A%5B%7B%22type%22%3A%22custom%22%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fwww.facebook.com%5C%2Ftrianglenailsbar%5C%2Freviews%5C%2F%3Fref%3Dpage_internal%22%2C%22iconUrl%22%3A%22https%3A%5C%2F%5C%2Ftrianglenailsbar.com%5C%2Fwp-content%5C%2Fuploads%5C%2F2020%5C%2F08%5C%2FFacebook-1.png%22%7D%2C%7B%22type%22%3A%22custom%22%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fwww.google.com%5C%2Fsearch%3Fclient%3Dsafari%26rls%3Den%26sxsrf%3DALeKk025YEq4oLfUXSPnMDr1MFDBBmVoog%253A1605237298752%26ei%3DMvqtX_fDLdri-AbqiISQCw%26q%3Dtriangle%2Bnails%2Bbar%2BRaleigh%252C%2BNC%2B27616%26oq%3Dtriangle%2Bnails%2Bbar%2BRaleigh%252C%2BNC%2B27616%26gs_lcp%3DCgZwc3ktYWIQAzoHCCMQyQMQJzoJCAAQyQMQFhAeUJq2AVi1uAFggboBaABwAHgAgAGNAYgB3AKSAQMxLjKYAQCgAQGgAQKqAQdnd3Mtd2l6wAEB%26sclient%3Dpsy-ab%26ved%3D0ahUKEwj3pOP3xv7sAhVaMd4KHWoEAbIQ4dUDCAw%26uact%3D5%23lrd%3D0x89ac591a6e1aec2d%3A0x444037e0d47f3308%2C3%2C%2C%2C%22%2C%22iconUrl%22%3A%22https%3A%5C%2F%5C%2Ftrianglenailsbar.com%5C%2Fwp-content%5C%2Fuploads%5C%2F2020%5C%2F08%5C%2FGoogle-1.png%22%7D%2C%7B%22type%22%3A%22custom%22%2C%22url%22%3A%22https%3A%5C%2F%5C%2Fwww.yelp.com%5C%2Fwriteareview%5C%2Fbiz%5C%2FFgeqB0YzrJx3dUpRTLG0rw%3Freturn_url%3D%252Fbiz%252FFgeqB0YzrJx3dUpRTLG0rw%22%2C%22iconUrl%22%3A%22https%3A%5C%2F%5C%2Ftrianglenailsbar.com%5C%2Fwp-content%5C%2Fuploads%5C%2F2020%5C%2F08%5C%2FYelp-1.png%22%7D%5D%2C%22size%22%3A%2260%22%2C%22location%22%3A%22floating%22%2C%22position%22%3A%22right%22%2C%22style%22%3A%22default%22%2C%22iconColor%22%3A%22white%22%2C%22bgColor%22%3A%22native%22%2C%22iconColorOnHover%22%3A%22white%22%2C%22bgColorOnHover%22%3A%22native%22%2C%22borderRadius%22%3A%22circle%22%2C%22animation%22%3A%22bounce%22%2C%22transparency%22%3A100%2C%22transparencyOnHover%22%3A100%2C%22widgetId%22%3A%221%22%7D" data-elfsight-social-icons-version="1.6.1" data-elfsight-widget-id="elfsight-social-icons-1"></div>
+                                                <div class="elfsight-widget-click-to-call elfsight-widget" data-elfsight-click-to-call-options="%7B%22phone%22%3A%22%2B1%209199008439%22%2C%22buttonIconVisible%22%3Atrue%2C%22bubbleText%22%3A%22BOOK%20APPOINTMENT%22%2C%22windowPicture%22%3A%22library%22%2C%22windowPictureLibrary%22%3A%7B%22name%22%3A%22Miyah%20Myles%22%2C%22email%22%3A%22miyah.myles%40gmail.com%22%2C%22position%22%3A%22Administrative%20Assistant%22%2C%22photo%22%3A%22https%3A%5C%2F%5C%2Fimages.unsplash.com%5C%2Fphoto-1494790108377-be9c29b29330%3Fixlib%3Drb-0.3.5%26q%3D80%26fm%3Djpg%26crop%3Dentropy%26cs%3Dtinysrgb%26w%3D200%26fit%3Dmax%26s%3D707b9c33066bf8808c934c8ab394dff6%22%7D%2C%22windowPictureCustom%22%3Anull%2C%22windowName%22%3A%22Triangle%20Nails%20Bar%22%2C%22windowCaption%22%3A%22Click%20the%20phone%20number%20to%20book%20appointment.%22%2C%22windowText%22%3A%22%22%2C%22windowFormatPhone%22%3Atrue%2C%22position%22%3A%7B%22align%22%3A%22right%22%2C%22position%22%3A%22floating%22%7D%2C%22whereToDisplay%22%3A%22allPages%22%2C%22excludedPages%22%3A%5B%5D%2C%22specificPages%22%3A%5B%5D%2C%22devicesToDisplay%22%3A%5B%22mobile%22%2C%22desktop%22%5D%2C%22showTo%22%3A%22allVisitors%22%2C%22displayDays%22%3A%5B0%2C1%2C2%2C3%2C4%2C5%2C6%5D%2C%22timeSchedule%22%3Afalse%2C%22displayStartTime%22%3A%2200%3A00%22%2C%22displayEndTime%22%3A%2200%3A00%22%2C%22timeOnPage%22%3A0%2C%22timeOnSite%22%3A0%2C%22scrollPosition%22%3A0%2C%22exiIntent%22%3Afalse%2C%22bubbleBackgroundColor%22%3A%22rgb%2834%2C%2034%2C%2034%29%22%2C%22bubbleTextColor%22%3A%22rgb%28251%2C%20233%2C%20168%29%22%2C%22bubbleSize%22%3A15%2C%22bubbleAnimationEnabled%22%3Atrue%2C%22bubbleAnimationInterval%22%3A5%2C%22windowBackgroundColor%22%3A%22rgb%28255%2C%20255%2C%20255%29%22%2C%22windowTextColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22windowPhoneColor%22%3A%22rgb%2817%2C%2017%2C%2017%29%22%2C%22windowNameFontSize%22%3A16%2C%22windowCaptionFontSize%22%3A11%2C%22windowTextFontSize%22%3A15%2C%22windowPhoneFontSize%22%3A20%2C%22widgetId%22%3A%221%22%7D" data-elfsight-click-to-call-version="1.2.0" data-elfsight-widget-id="elfsight-click-to-call-1"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section the_content no_content">
+                            <div class="section_wrapper">
+                                <div class="the_content_wrapper"></div>
+                            </div>
+                        </div>
+                        <div class="section section-page-footer">
+                            <div class="section_wrapper clearfix">
+                                <div class="column one page-pager"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+
+    default:
+        <div class="page news-list-page">
+            <div class="page-title">
+                <a href="" class="link-rss" title="RSS">RSS</a>
+                <h1>News</h1>
+            </div>
+            <div class="page-body">
+
+                <div class="news-items">
+                    @foreach (var item in Model.NewsItems)
+                    {
+                        <div class="news-item">
+                            <div class="news-head">
+                                <a class="news-title" href="">@item.Title</a>
+                                <span class="news-date">-@item.CreatedOn.ToString("D")</span>
+                            </div>
+                            <div class="news-body">
+                                @Html.Raw(item.Short)
+                            </div>
+                            <div class="buttons">
+                                <a href="" class="read-more">MoreInfo</a>
+                            </div>
+
+                        </div>
+                    }
+                </div>
+                @*@{
+                        var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
+                    }
+                    @if (!pager.IsEmpty())
+                    {
+                        <div class="pager">
+                            @pager
+                        </div>
+                    }*@
+                @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageAfterItems })*@
+            </div>
+        </div>
+        break;
+}
+

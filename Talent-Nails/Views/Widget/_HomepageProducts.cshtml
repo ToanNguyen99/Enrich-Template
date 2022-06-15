@@ -1,0 +1,22 @@
+﻿@using Commerce.UI.Models.Catalog
+@model IList<ProductOverviewModel>
+
+@if (Model.Count > 0)
+{
+    <div class="product-grid home-page-product-grid">
+        <div class="title">
+            <strong>Featured products</strong>
+        </div>
+        <div class="item-grid">
+            @foreach (var item in Model)
+            {
+            <div class="item-box">
+                @{
+                    Html.RenderPartial("_ProductBox", item);
+                }
+            </div>
+            }
+        </div>
+    </div>
+}
+

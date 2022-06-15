@@ -1,0 +1,163 @@
+﻿@using Commerce.UI.Models.News
+@using Commerce.Core.Domain.Templates
+@model NewsItemModel
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+
+}
+@switch (Model.DefaultStoreTheme)
+{
+    case ThemeName.MangoS8HOL:
+        <div id="Subheader">
+            <div class="container">
+                <div class="column one">
+                    <h1 class="title">@Html.Raw(Model.Title)</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="Content">
+            <div class="content_wrapper clearfix">
+                <div class="sections_group">
+                    <div class="no-img share-simple post-2443 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                        @*<a class="fixed-nav fixed-nav-prev format- style-default" href="https://trianglenailsbar.com/nail-trends-youll-fall-for/">
+                            <span class="arrow">
+                                <i class="icon-left-open-big"></i>
+                            </span>
+                            <div class="photo">
+                                <img width="80" height="80" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2080%2080'%3E%3C/svg%3E" class="attachment-blog-navi size-blog-navi wp-post-image" alt="" data-lazy-srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-80x80.jpg 80w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-150x150.jpg 150w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-85x85.jpg 85w" data-lazy-sizes="(max-width: 80px) 100vw, 80px" data-lazy-src="https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-80x80.jpg" />
+                                <noscript>
+                                    <img width="80" height="80" src="https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-80x80.jpg" class="attachment-blog-navi size-blog-navi wp-post-image" alt="" srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-80x80.jpg 80w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-150x150.jpg 150w, https://trianglenailsbar.com/wp-content/uploads/2020/08/blog-header_9-85x85.jpg 85w" sizes="(max-width: 80px) 100vw, 80px" />
+                                </noscript>
+                            </div>
+                            <div class="desc">
+                                <h6>@Html.Raw(Model.Title)</h6>
+                                <span class="date">
+                                    <i class="icon-clock"></i>
+                                    @Model.CreatedOn.ToString("MMMMM dd, yyyy")
+                                    
+                                </span>
+                            </div>
+                        </a>*@
+                        @*<a class="fixed-nav fixed-nav-next format- style-default" href="https://trianglenailsbar.com/playing-footsie/">
+                            <span class="arrow">
+                                <i class="icon-right-open-big"></i>
+                            </span>
+                            <div class="photo">
+                                <img width="80" height="80" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2080%2080'%3E%3C/svg%3E" class="attachment-blog-navi size-blog-navi wp-post-image" alt="" data-lazy-srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-80x80.jpg 80w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-150x150.jpg 150w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-85x85.jpg 85w" data-lazy-sizes="(max-width: 80px) 100vw, 80px" data-lazy-src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-80x80.jpg" />
+                                <noscript>
+                                    <img width="80" height="80" src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-80x80.jpg" class="attachment-blog-navi size-blog-navi wp-post-image" alt="" srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-80x80.jpg 80w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-150x150.jpg 150w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-9-85x85.jpg 85w" sizes="(max-width: 80px) 100vw, 80px" />
+                                </noscript>
+                            </div>
+                            <div class="desc">
+                                <h6>Playing Footsie</h6>
+                                <span class="date">
+                                    <i class="icon-clock"></i>
+                                    August 27, 2020
+                                </span>
+                            </div>
+                        </a>*@
+                        <div class="section section-post-header">
+                            <div class="section_wrapper clearfix">
+                                @*<div class="column one post-nav ">
+                                    <ul class="next-prev-nav">
+                                        <li class="prev">
+                                            <a class="button button_js" href="https://trianglenailsbar.com/nail-trends-youll-fall-for/">
+                                                <span class="button_icon">
+                                                    <i class="icon-left-open"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <li class="next">
+                                            <a class="button button_js" href="https://trianglenailsbar.com/playing-footsie/">
+                                                <span class="button_icon">
+                                                    <i class="icon-right-open"></i>
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>*@
+                                <div class="column one post-header">
+                                    <div class="title_wrapper">
+                                        <h1 class="entry-title" itemprop="headline">@Html.Raw(Model.Title)</h1>
+                                    </div>
+                                </div>
+                                <div class="column one single-photo-wrapper image">
+                                    <div class="image_frame scale-with-grid disabled">
+                                        <div class="image_wrapper">
+                                            <img width="900" height="480" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20480'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt="" data-lazy-src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-5-900x480.jpg" />
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post-wrapper-content">
+                            @Html.Raw(Model.Full)
+                        </div>
+                        <div class="section section-post-related">
+                            <div class="section_wrapper clearfix">
+                                <div class="section-related-adjustment ">
+                                    <h4>Related posts</h4>
+                                    <div class="section-related-ul col-3">
+                                        <div class="column post-related post-2457 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+                                            <div class="single-photo-wrapper image">
+                                                <div class="image_frame scale-with-grid">
+                                                    <div class="image_wrapper">
+                                                        <a href="https://trianglenailsbar.com/enter-the-beauty-envision-awards-to-win-5000/">
+                                                            <div class="mask"></div>
+                                                            <img width="900" height="550" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20900%20550'%3E%3C/svg%3E" class="scale-with-grid wp-post-image" alt="" data-lazy-srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10.jpg 900w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-300x183.jpg 300w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-768x469.jpg 768w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-239x146.jpg 239w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-50x31.jpg 50w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-123x75.jpg 123w" data-lazy-sizes="(max-width: 900px) 100vw, 900px" data-lazy-src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10.jpg" />
+                                                            <noscript>
+                                                                <img width="900" height="550" src="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10.jpg" class="scale-with-grid wp-post-image" alt="" srcset="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10.jpg 900w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-300x183.jpg 300w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-768x469.jpg 768w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-239x146.jpg 239w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-50x31.jpg 50w, https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10-123x75.jpg 123w" sizes="(max-width: 900px) 100vw, 900px" />
+                                                            </noscript>
+                                                        </a>
+                                                        <div class="image_links double">
+                                                            <a href="https://trianglenailsbar.com/wp-content/uploads/2020/08/image-blog-10.jpg" class="zoom" rel="prettyphoto">
+                                                                <i class="icon-search"></i>
+                                                            </a>
+                                                            <a href="https://trianglenailsbar.com/enter-the-beauty-envision-awards-to-win-5000/" class="link">
+                                                                <i class="icon-link"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="date_label">August 27, 2020</div>
+                                            <div class="desc">
+                                                <h4>
+                                                    <a href="https://trianglenailsbar.com/enter-the-beauty-envision-awards-to-win-5000/">Enter the Beauty Envision Awards to Win $5000!</a>
+                                                </h4>
+                                                <hr class="hr_color" />
+                                                <a href="https://trianglenailsbar.com/enter-the-beauty-envision-awards-to-win-5000/" class="button button_left button_js">
+                                                    <span class="button_icon">
+                                                        <i class="icon-layout"></i>
+                                                    </span>
+                                                    <span class="button_label">Read more</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section section-post-comments">
+                            <div class="section_wrapper clearfix">
+                                <div class="column one comments">
+                                    <div id="comments">
+                                        <p class="nocomments">Comments are closed.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        break;
+
+    default:
+        
+        break;
+}
+

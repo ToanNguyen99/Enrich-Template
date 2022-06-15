@@ -1,0 +1,221 @@
+﻿@using Commerce.UI.Areas.Admin.Models.Stores
+@using Commerce.UI.Models.Themes
+@model StoreAdminModel
+
+@{
+    ViewBag.Title = "CreatePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <style>
+        .rvc-hidden {
+            display: none;
+        }
+        textarea:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        input[type="datetime"]:focus,
+        input[type="datetime-local"]:focus,
+        input[type="date"]:focus,
+        input[type="month"]:focus,
+        input[type="time"]:focus,
+        input[type="week"]:focus,
+        input[type="number"]:focus,
+        input[type="email"]:focus,
+        input[type="url"]:focus,
+        input[type="search"]:focus,
+        input[type="tel"]:focus,
+        input[type="color"]:focus,
+        .uneditable-input:focus {
+            border-color: rgba(126, 239, 104, 0.8);
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+            color: #666;
+            border: 1px solid #ccc;
+        }
+    </style>
+}
+<div class="row d-flex justify-content-center" style="padding-top:20px; margin-bottom:20px;">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-header" style="text-align: center;background: none;border: none;">
+                <h3 class="card-title">Resgister new store</h3>
+            </div>
+            <div class="row card-body">
+                <div class="general-label col-6">
+                    @using (Html.BeginForm("CreatePage", "Customer", FormMethod.Post, new { @class = "form-horizontal auth-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary()
+                        @Html.HiddenFor(x=>x.RVCNo)
+                        <div class="form-group mb-2">
+                            <label for="conf_password">Theme name</label>
+                            <div class="input-group">
+                                @Html.DropDownListFor(x => x.ThemeId, Model.Themes, new { @class = "form-control" })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-0 row">
+                            <div class="col-12">
+                                <button class="btn btn-primary btn-block waves-effect waves-light" type="submit" style="background:#000;">Create page <i class="fas fa-sign-in-alt ml-1"></i></button>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+                <div class="general-label col-6 box-theme">
+                    @if (Model.ThemesViewModel.Image != null)
+                    {
+                        <img id="img-theme" src="@Model.ThemesViewModel.Image" style="width:100%; height:100%" />
+                    }
+                    else
+                    {
+                        <span>Please Choose Themes</span>
+                    }
+                    
+                </div>
+            </div><!--end card-body-->
+        </div><!--end card-->
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        $('#MangoIntegrate').click(function () {
+            if ($('#MangoIntegrate').is(':checked')) {
+                $('.box-rvc').removeClass('rvc-hidden');
+                $(this).val('true');
+            } else {
+                $('.box-rvc').addClass('rvc-hidden');
+                $(this).val('false');
+            }
+        })
+        $('#ThemeId').change(function () {
+            var value = $(this).val();
+            //alert(value);
+            if (value != '0') {
+                $.ajax({
+                    async: false,
+                    type: 'POST',
+                    url: '/Customer/ChangeTheme',
+                    dataType: 'json',
+
+                    data: { id: value },
+                    success: (response) => {
+                        var img = $('#img-theme');
+                        if (img.length > 0) {
+                            $('#img-theme').attr('src', response.extended_data.Url)
+                        }
+                        else {
+                            $('.box-theme').html('<img id="img-theme" src=' + response.extended_data.Url + ' style="width:100%; height:100%" />')
+                        }
+
+
+
+                    }
+                });
+            }
+            else {
+                $('.box-theme').html(' <span>Please Choose Themes</span>');
+            }
+            
+        })
+
+    </script>
+}
+
+
+@*@section styles{
+        <style>
+            .rvc-hidden{
+                display:none;
+            }
+        </style>
+
+    }
+    <div class="row d-flex justify-content-center" style="padding-top:20px; margin-bottom:20px;">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header" style="text-align: center;background: none;border: none;">
+                    <h3 class="card-title">Resgister new store</h3>
+                </div>
+                <div class="card-body">
+                    <div class="general-label">
+                        @using (Html.BeginForm("CreatePage", "Customer", FormMethod.Post, new { @class = "form-horizontal auth-form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary()
+                            <div class="form-group mb-2">
+                                <label for="conf_password">Theme name</label>
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.ThemeId, Model.Themes, new { @class = "form-control" })
+
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="username">Page name</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="useremail">Company Name</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="userpassword">Page Address</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.CompanyAddress, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label for="conf_password">Page phone number</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.CompanyPhoneNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" name="MangoIntegrate" id="MangoIntegrate" value="false">
+                                <label class="form-check-label" for="MangoIntegrate">Use Mango Integrate</label>
+                            </div>
+
+                            <div class="form-group mb-2 box-rvc rvc-hidden">
+                                <label for="conf_password">RVC Number</label>
+                                <div class="input-group">
+                                    @Html.TextBoxFor(x => x.RVCNo, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-0 row">
+                                <div class="col-12">
+                                    <button class="btn btn-primary btn-block waves-effect waves-light" type="submit" style="background:#000;">Create page <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts{
+        <script>
+            $('#MangoIntegrate').click(function () {
+                if ($('#MangoIntegrate').is(':checked')) {
+                    $('.box-rvc').removeClass('rvc-hidden');
+                    $(this).val('true');
+                } else {
+                    $('.box-rvc').addClass('rvc-hidden');
+                    $(this).val('false');
+                }
+            })
+
+
+        </script>
+    }*@

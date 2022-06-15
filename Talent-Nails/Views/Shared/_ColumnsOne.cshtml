@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "~/Themes/Mango-KVDEN/Views/Shared/_Root.cshtml";
+}
+@if (IsSectionDefined("Breadcrumb"))
+{
+    @section Breadcrumb {
+        @RenderSection("Breadcrumb")
+    }
+}
+
+@RenderBody()

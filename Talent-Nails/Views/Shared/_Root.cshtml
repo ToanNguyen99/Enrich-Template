@@ -1,0 +1,73 @@
+﻿@using Commerce.Services.Configuration
+@using Commerce.Core
+@using Commerce.Core.Domain
+@using Commerce.Core.Domain.Templates
+@{
+
+    var settingService = DependencyResolver.Current.GetService<ISettingService>();
+    StoreInformationSettings storeInformationSettings = settingService.LoadSetting<StoreInformationSettings>(Model.Store.Id);
+
+}
+
+
+@{
+    Layout = Constant.DefaultTheme + $"{storeInformationSettings.DefaultStoreTheme}/Views/Shared/_RootHead.cshtml";
+}
+
+
+    <section class="eltdf-side-menu">
+        <a class="eltdf-close-side-menu eltdf-close-side-menu-svg-path" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="12.998px" height="12.999px" viewBox="0 0 12.998 12.999" enable-background="new 0 0 12.998 12.999"
+                 xml:space="preserve">
+            <g>
+            <path fill="#2d2d2d" stroke-width=".1"
+                  d="M12.178,0.01l0.811,0.812L7.312,6.5l5.677,5.677l-0.811,0.812L6.5,7.311l-5.679,5.678l-0.811-0.812 L5.688,6.5L0.011,0.822L0.821,0.01L6.5,5.688L12.178,0.01z" />
+
+
+
+                </g>
+            </svg>
+        </a>
+        <div class="partialContents" data-url="@Url.Action("TopicBlock","Widget", new { id= Model.Store.Id, systemName = "PopupContent" })">
+
+        </div>
+        @*@Html.Action("TopicBlock","Widget", new { id= Model.Store.Id, systemName = "PopupContent" })*@
+
+    </section>
+<div class="eltdf-wrapper">
+    <div class="eltdf-cover"></div>
+    <div class="eltdf-wrapper-inner">
+        <!--header link-->
+        <div class="partialContents" data-url="@Url.Action("HeaderLinks", "Widget", new { id = Model.Store.Id })"></div>
+        @*@Html.Action("HeaderLinks", "Widget", new { id = Model.Store.Id })*@
+        <!--end header link-->
+        <!--header-->
+        @Html.Action("TopMenu", "Widget", new { id = Model.Store.Id })
+        <!--header-->
+        <a id='eltdf-back-to-top' href='#'>
+            <span class="eltdf-icon-stack">
+                <i class="eltdf-icon-ion-icon ion-ios-arrow-up "></i>
+                <span class="eltdf-btt eltdf-disc-btt-top-left"></span>
+                <span class="eltdf-btt eltdf-disc-btt-top-right"></span>
+                <span class="eltdf-btt eltdf-disc-btt-right"></span>
+                <span class="eltdf-btt eltdf-disc-btt-bottom-right"></span>
+                <span class="eltdf-btt eltdf-disc-btt-bottom-left"></span>
+                <span class="eltdf-btt eltdf-disc-btt-left"></span>
+            </span>
+        </a>
+        @RenderBody()
+
+        <!-- close div.content -->
+        <!--footer-->
+        <div class="partialContents" data-url="@Url.Action("Footer", "Widget", new { id = Model.Store.Id })"></div>
+        @*@Html.Action("Footer", "Widget", new { id = Model.Store.Id })*@
+        <!--end footer-->
+    </div>
+    <!-- close div.eltdf-wrapper-inner  -->
+</div>
+<!-- close div.eltdf-wrapper -->
+@*<div class="floating-menu float-menu-2 partialContents" data-url="@Url.Action("SocialButtons", "Widget", new {id = Model.Store.Id, isStyle = true })"></div>*@
+@Html.Action("SocialButtons", "Widget", new {id = Model.Store.Id, isStyle = true })
+
+@Html.Partial(Constant.DefaultTheme + $"{storeInformationSettings.DefaultStoreTheme}/Views/Shared/_ModalMango.cshtml", storeInformationSettings)

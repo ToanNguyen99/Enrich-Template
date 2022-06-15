@@ -1,0 +1,105 @@
+﻿@using Commerce.UI.Models.Common
+@using Commerce.Core.Domain.Templates
+
+@model SocialModel
+
+@if (Model.isStyle)
+{
+    <div class="floating-menu float-menu-2">
+        <ul class="fm-bar">
+            <li class="fm-sub fm-item-2-0">
+                <div class="fm-icon">
+                    <img src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/02/contact-us-1.png">
+                </div>
+                <ul>
+                    <li class="fm-item-2-1">
+                        <a href="tel:317-300-0933">
+                            <div class="fm-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="fm-label"></div>
+                        </a>
+                    </li>
+                    <li class="fm-item-2-2">
+                        <a href="https://www.facebook.com/Talent-Nails-101086352252731/" target="_blank">
+                            <div class="fm-icon">
+                                <i class="fab fa-facebook-square"></i>
+                            </div>
+                            <div class="fm-label"></div>
+                        </a>
+                    </li>
+                    <li class="fm-item-2-3">
+                        <a href="" target="_blank">
+                            <div class="fm-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="fm-label"></div>
+                        </a>
+                    </li>
+                    <li class="fm-item-2-4">
+                        <a href="#" target="_blank">
+                            <div class="fm-icon">
+                                <i class="fab fa-yelp"></i>
+                            </div>
+                            <div class="fm-label"></div>
+                        </a>
+                    </li>
+                    <li class="fm-item-2-5">
+                        <a href="https://goo.gl/maps/3sbkH3meRZRKJjy37"
+                           target="_blank">
+                            <div class="fm-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="fm-label"></div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+}
+else
+{
+    <div class="eltdf-position-left-inner">
+        @if (!string.IsNullOrEmpty(Model.InstagramLink))
+        {
+            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+               data-hover-color="#b6dd54"
+               style="color: #9edd00;;font-size: 12px;margin: 0px 17px 0px 0px;"
+               href="@Model.InstagramLink" target="_blank">
+                <span class="eltdf-social-icon-widget  social_instagram"></span>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(Model.FacebookLink))
+        {
+            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+               data-hover-color="#b6dd54"
+               style="color: #9edd00;;font-size: 12px;margin: 0px 17px 0px 0px;"
+               href="@Model.FacebookLink" target="_blank">
+                <span class="eltdf-social-icon-widget  social_facebook"></span>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(Model.YelpLink))
+        {
+            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+               data-hover-color="#b6dd54"
+               style="color: #9edd00;font-size: 12px;margin: 0px 17px 0px 0px;"
+               href="@Model.YelpLink"
+               target="_blank">
+                <span class="eltdf-social-icon-widget fab fa-yelp"></span>
+            </a>
+        }
+        @if (!string.IsNullOrEmpty(Model.GoogleLink))
+        {
+            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+               data-hover-color="#b6dd54" style="color: #9edd00;"
+               href="@Model.GoogleLink"
+               target="_self">
+                <span class="eltdf-social-icon-widget fab fa-google      "></span>
+            </a>
+        }
+
+    </div>
+}
+
+

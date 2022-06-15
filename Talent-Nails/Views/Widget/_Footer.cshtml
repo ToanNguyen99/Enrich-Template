@@ -1,0 +1,127 @@
+﻿@using Commerce.UI.Models.Common
+
+
+@model FooterModel
+@{
+    var linkbase = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Authority;
+}
+
+    <footer class="eltdf-page-footer ">
+        <div class="eltdf-footer-top-holder">
+            <div class="eltdf-footer-top-inner eltdf-full-width">
+                <div class="eltdf-grid-row eltdf-footer-top-alignment-center">
+                    <div class="eltdf-column-content eltdf-grid-col-3">
+                        <div id="media_image-5" class="widget eltdf-footer-column-1 widget_media_image">
+                            @if (!string.IsNullOrEmpty(Model.LogoPath))
+                            {
+                                <a href="">
+                                    <img  src="@Model.LogoPath"
+                                         class="image wp-image-5640  attachment-full size-full" alt=""
+                                         style="max-width: 100%; height: auto;" />
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="eltdf-column-content eltdf-grid-col-3">
+                        <div id="text-17" class="widget eltdf-footer-column-2 widget_text">
+                            <div class="eltdf-widget-title-holder">
+                                <h5 class="eltdf-widget-title">CONTACT US</h5>
+                            </div>
+                            <div class="textwidget">
+                                <p id="phone" style="color: #9edd00;">
+                                    <strong>
+                                        <i class="fa fa-phone"></i>
+                                        CALL US:
+                                    </strong>
+                                    <a style="color: white;" href="tel:@Model.PhoneNumber">@Model.PhoneNumber</a>
+                                </p>
+                                <p id="location" style="color: #9edd00;">
+                                    <strong>
+                                        <i class="fa fa-home"></i>
+                                        ADDRESS:
+                                    </strong>
+                                    @{
+                                        string map = "https://www.google.com/maps/place/Queen+Nail+Spa/@37.0742698,-88.6881673,15z/data=!4m2!3m1!1s0x0:0xfc13588d82c8f985?sa=X&amp;ved=2ahUKEwjFiovKmYLuAhXRX3wKHTrIA6IQ_BIwCnoECBoQBQ";
+                                    }
+                                    <a style="color: white;"
+                                       href="@Model.GoogleLink">
+                                        @Model.StoreAddress
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eltdf-column-content eltdf-grid-col-3">
+                        <div id="text-16" class="widget eltdf-footer-column-3 widget_text">
+                            <div class="eltdf-widget-title-holder">
+                                <h5 class="eltdf-widget-title">BUSINESS HOURS</h5>
+                            </div>
+                            <div class="textwidget">
+                                <!--open hour-->
+                                @Html.Action("TopicBlock", "Widget", new { id = Model.StoreId, systemName = "OpenHours" })
+
+                                <!--end open hour-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="eltdf-column-content eltdf-grid-col-3">
+                        <div id="custom_html-3"
+                             class="widget_text widget eltdf-footer-column-4 widget_custom_html">
+                            <div class="eltdf-widget-title-holder">
+                                <h5 class="eltdf-widget-title">FOLLOW US</h5>
+                            </div>
+                            <div class="textwidget custom-html-widget"></div>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                        {
+                            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+                               data-hover-color="#b6dd54"
+                               style="color: #ffffff;font-size: 30px;margin: 0px 10px 10px 10px;"
+                               href="@Model.FacebookLink" target="_blank">
+                                <span class="eltdf-social-icon-widget  social_facebook     "></span>
+                            </a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.GoogleLink))
+                        {
+                            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+                               data-hover-color="#b6dd54"
+                               style="color: #ffffff;;font-size: 30px;margin: 0px 10px 10px 10px;"
+                               href="@Model.GoogleLink"
+                               target="_blank">
+                                <span class="eltdf-social-icon-widget  social_googleplus_square     "></span>
+                            </a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.YelpLink))
+                        {
+                            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+                               data-hover-color="#b6dd54"
+                               style="color: #ffffff;font-size: 30px;margin: 0px 10px 10px 10px;"
+                               href="@Model.YelpLink"
+                               target="_blank">
+                                <span class="eltdf-social-icon-widget fab fa-yelp      "></span>
+                            </a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.InstagramLink))
+                        {
+                            <a class="eltdf-social-icon-widget-holder eltdf-icon-has-hover"
+                               data-hover-color="#b6dd54"
+                               style="color: #ffffff;font-size: 30px;margin: 0px 10px 10px 10px;"
+                               href="@Model.InstagramLink" target="_blank">
+                                <span class="eltdf-social-icon-widget  social_instagram     "></span>
+                            </a>
+                        }
+
+                        <div id="text-20" class="widget eltdf-footer-column-4 widget_text">
+                            <div class="textwidget"></div>
+                        </div>
+                        <div id="media_image-8" class="widget eltdf-footer-column-4 widget_media_image">
+                            <img width="200" height="23" src="~/Themes/Mango-KVDEN/wp-content/uploads/2021/01/payment-talent.png"
+                                 class="image wp-image-5937  attachment-200x23 size-200x23" alt=""
+                                 style="max-width: 100%; height: auto;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>

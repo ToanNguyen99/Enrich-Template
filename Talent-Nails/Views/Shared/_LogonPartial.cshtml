@@ -1,0 +1,21 @@
+﻿
+
+@if (User.Identity.IsAuthenticated)
+{
+    @*<li><a class="dropdown-item fs-18 font-weight-lighter" href="@Url.Action("login","customer")">My Account</a></li>
+    <li><a class="dropdown-item fs-18 font-weight-lighter" href="@Url.Action("register","customer")">Logout</a></li>
+    <li><a class="dropdown-item fs-18 font-weight-lighter" href="@Url.Action("index","home", new { area = "Admin"})">Management page</a></li>*@
+
+    <li><a  href="@Url.Action("myaccount","customer")">My Account</a></li>
+    <li><a href="@Url.Action("signout","customer")">Logout</a></li>
+    <li><a href="@Url.Action("index","home", new { area = "Admin"})">Management page</a></li>
+
+}
+else
+{
+    <li><a href="@Url.Action("login","customer")">Login</a></li><li>
+    <a href="@Url.Action("register","customer")">Register</a></li>
+    @*<li><a class="dropdown-item fs-18 font-weight-lighter" href="@Url.Action("login","customer")">Login</a></li>
+    <li><a class="dropdown-item fs-18 font-weight-lighter" href="@Url.Action("register","customer")">Register</a></li>*@
+
+}
